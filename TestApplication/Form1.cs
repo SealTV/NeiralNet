@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
+using System.IO;
 using System.Windows.Forms;
 using NeuronNet;
 using NeuronNet.FunctionActivation;
@@ -13,13 +14,13 @@ namespace TestApplication
 {
     public partial class Form1 : Form
     {
-        private readonly TextBox[] inputBoxes;
-        private readonly TextBox[] outputBoxes;
-        private readonly TextBox[] testInputBoxes;
-        private readonly TextBox[] testOutputBoxes;
+        private TextBox[] inputBoxes;
+        private TextBox[] outputBoxes;
+        private TextBox[] testInputBoxes;
+        private TextBox[] testOutputBoxes;
 
-        private readonly ExamplesDataHelper exampleHelper;
-        private readonly NeuralNetDataHelper neuralNetData;
+        private ExamplesDataHelper exampleHelper;
+        private NeuralNetDataHelper neuralNetData;
 
         private double speed;
         private int maxCount;
@@ -27,11 +28,16 @@ namespace TestApplication
         public Form1()
         {
             InitializeComponent();
-            this.inputBoxes = new[] { inputBox1, inputBox2, inputBox3, inputBox4, inputBox5, inputBox6, inputBox7, inputBox8 };
-            this.outputBoxes = new[] { outputBox1, outputBox2 };
+            InitElements();
+        }
 
-            this.testInputBoxes = new[] { textBox1, textBox2, textBox3, textBox4, textBox5, textBox6, textBox7, textBox8 };
-            this.testOutputBoxes = new[] { textBox9, textBox10 };
+        private void InitElements()
+        {
+            this.inputBoxes = new[] {inputBox1, inputBox2, inputBox3, inputBox4, inputBox5, inputBox6, inputBox7, inputBox8};
+            this.outputBoxes = new[] {outputBox1, outputBox2};
+
+            this.testInputBoxes = new[] {textBox1, textBox2, textBox3, textBox4, textBox5, textBox6, textBox7, textBox8};
+            this.testOutputBoxes = new[] {textBox9, textBox10};
 
 
             this.neuralNetData = new NeuralNetDataHelper();
@@ -39,15 +45,7 @@ namespace TestApplication
 
             if (this.neuralNetData.NET != null)
             {
-                LayersCountTextBox.Text = neuralNetData.NET.Layers.Length.ToString();
-                string result = string.Empty;
-                foreach (Layer layer in neuralNetData.NET.Layers)
-                {
-                    result += layer.LayerNeurons.Length + ',';
-                }
-                NeuronsInLayersTextBox.Text = string.Empty;
-                ActivationFunckType.SelectedItem = this.neuralNetData.NET.Type;
-                AlphaValueTextBox.Text = this.neuralNetData.NET.Alpha.ToString();
+                UpdateNetInfoFields();
             }
             this.exampleHelper = new ExamplesDataHelper();
             this.exampleHelper.LoadExamples();
@@ -69,6 +67,24 @@ namespace TestApplication
             GraphicsDrawer.DrawEllipses();
         }
 
+        private void UpdateNetInfoFields()
+        {
+            LayersCountTextBox.Text = neuralNetData.NET.Layers.Length.ToString();
+            string result = string.Empty;
+            if (neuralNetData.NET.Layers.Length > 0)
+            {
+                for (int i = 0; i < neuralNetData.NET.Layers.Length - 1; i++)
+                {
+                    result += neuralNetData.NET.Layers[i].LayerNeurons.Length.ToString() + ',';
+                }
+                result += neuralNetData.NET.Layers[neuralNetData.NET.Layers.Length - 1].LayerNeurons.Length.ToString();
+            }
+            NeuronsInLayersTextBox.Text = result;
+            ActivationFunckType.SelectedItem = this.neuralNetData.NET.Type;
+            AlphaValueTextBox.Text = this.neuralNetData.NET.Alpha.ToString();
+        }
+
+        #region event handlers
         private void KeyPressTextBox(object sender, KeyPressEventArgs e)
         {
             if (!(Char.IsDigit(e.KeyChar) || (e.KeyChar != '.' || e.KeyChar != ',')))
@@ -82,16 +98,23 @@ namespace TestApplication
 
         private void CreateNetButton_Click(object sender, EventArgs e)
         {
-            int inputCount;
-            int middleCount;
-            int outputCount;
+            int layersCount;
+            int[] neuronsInLayer;
             double alpha;
             ActivationFunctionType activationFunctionType;
             try
             {
-                inputCount = Int32.Parse(LayersCountTextBox.Text);
-                middleCount = Int32.Parse(NeuronsInLayersTextBox.Text);
-                outputCount = Int32.Parse(OutputLayerNeurons.Text);
+                layersCount = Int32.Parse(LayersCountTextBox.Text);
+                neuronsInLayer = new int[layersCount];
+                string[] values = NeuronsInLayersTextBox.Text.Split(',');
+                if(values.Length != layersCount)
+                    throw new InvalidDataException(string.Format("{0} layers count", values.Length));
+
+                for (int i = 0; i < layersCount; i++)
+                {
+                    neuronsInLayer[i] = Int32.Parse(values[i]);
+                }
+
                 activationFunctionType = (ActivationFunctionType)ActivationFunckType.SelectedItem;
                 string str = AlphaValueTextBox.Text.Replace('.', ',');
                 alpha = double.Parse(str);
@@ -102,7 +125,7 @@ namespace TestApplication
                 return;
             }
 
-            neuralNetData.NET = new NeuralNetwork(new []{inputCount, middleCount, outputCount}, activationFunctionType, alpha);
+            neuralNetData.NET = new NeuralNetwork(neuronsInLayer, activationFunctionType, alpha);
             this.neuralNetData.SaveNeuralNet();
 
         }
@@ -111,13 +134,11 @@ namespace TestApplication
         {
             if (tabControl1.SelectedIndex == 0)
             {
-                LayersCountTextBox.Text = neuralNetData.NET.Layers.Length.ToString();
-                //InputLayerNeurons.Text = _neuralNetData.net.InputNeurons.Count.ToString();
-                //MiddleLayerNeurons.Text = _neuralNetData.net.MiddleNeurons.Count.ToString();
-                //OutputLayerNeurons.Text = _neuralNetData.net.OutputsNeurons.Count.ToString();
-                ActivationFunckType.SelectedItem = this.neuralNetData.NET.Type;
-                AlphaValueTextBox.Text = this.neuralNetData.NET.Alpha.ToString();
-
+                if (neuralNetData.NET == null)
+                {
+                    neuralNetData.LoadNeuralNet();
+                }
+                UpdateNetInfoFields();
             }
 
             if (tabControl1.SelectedIndex == 1)
@@ -452,5 +473,7 @@ namespace TestApplication
                 AddTestButton_Click(sender, null);
             }
         }
+
+        #endregion
     }
 }

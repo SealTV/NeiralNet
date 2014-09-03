@@ -1,4 +1,5 @@
-﻿using NeuronNet.FunctionActivation;
+﻿using System;
+using NeuronNet.FunctionActivation;
 using SimpleJSON;
 
 namespace NeuronNet.Serialize
@@ -36,7 +37,10 @@ namespace NeuronNet.Serialize
                     }
                 }
             }
-
+            Console.WriteLine(neuronsInLayers);
+            Console.WriteLine(type);
+            Console.WriteLine(alpha);
+            Console.WriteLine(weights.ToString());
             return new NeuralNetwork(neuronsInLayers, weights, type, alpha);
         }
 

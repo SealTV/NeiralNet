@@ -21,11 +21,13 @@ namespace TestApplication.NeuralNetData
                 var reader = new StreamReader(stream, Encoding.Unicode);
                 var data = reader.ReadToEnd();
                 if (string.IsNullOrEmpty(data)) return;
+                //Console.WriteLine(data);
                 this.NET = Deserializer.DeserializeNet(data);
                 stream.Close();
             }
             catch (Exception exc)
             {
+                Console.WriteLine(exc.ToString());
                 return;
             }
             finally

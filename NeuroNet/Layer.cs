@@ -19,18 +19,18 @@ namespace NeuronNet
 
         private LayerType LayerType;
 
-        public Layer(LayerType layerType, int neuronsCount, int intputlinkCount, ActivationFunctionType functionType, double alpha)
+        public Layer(LayerType layerType, int neuronsCount, int intputLinksCount, ActivationFunctionType functionType, double alpha)
         {
             LayerType = layerType;
             LayerNeurons = new Neuron[neuronsCount];
 
-            double[][] linksWeight = GenerateRandomWeights(neuronsCount, intputlinkCount);
+            double[][] linksWeight = GenerateRandomWeights(neuronsCount, intputLinksCount);
 
             for (int i = 0; i < neuronsCount; i++)
             {
                 LayerNeurons[i] = new Neuron(FunctionsFactory.GetActivationFunc(functionType, alpha));
-                LayerNeurons[i].InputLinks = new Link[linksWeight.Length];
-                for (int j = 0; j < intputlinkCount; j++)
+                LayerNeurons[i].InputLinks = new Link[intputLinksCount];
+                for (int j = 0; j < intputLinksCount; j++)
                 {
                     LayerNeurons[i].InputLinks[j] = new Link(linksWeight[i][j]);
                 }
@@ -45,8 +45,9 @@ namespace NeuronNet
             for (int i = 0; i < neuronsCount; i++)
             {
                 LayerNeurons[i] = new Neuron(FunctionsFactory.GetActivationFunc(functionType, alpha));
-                LayerNeurons[i].InputLinks = new Link[linksWeight.GetLength(1)];
-                for (int j = 0; j < linksWeight.GetLength(1); j++)
+                LayerNeurons[i].InputLinks = new Link[linksWeight[i].Length];
+
+                for (int j = 0; j < linksWeight[i].Length; j++)
                 {
                     LayerNeurons[i].InputLinks[j] = new Link(linksWeight[i][j]);
                 }
@@ -54,6 +55,7 @@ namespace NeuronNet
         }
         private double[][] GenerateRandomWeights(int neuronsCount, int inputCount)
         {
+            Console.WriteLine(neuronsCount + "   " + inputCount);
             double[][] result = new double[neuronsCount][];
             Random random = new Random();
             for (int i = 0; i < neuronsCount; i++)

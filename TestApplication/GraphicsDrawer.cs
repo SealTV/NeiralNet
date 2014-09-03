@@ -10,7 +10,14 @@ namespace TestApplication
         public static float CenterX { get; set; }
         public static float CenterY { get; set; }
         public static float Radius { get; set; }
-        public static List<PointF> InputPoints { get; set; }
+
+        private static List<PointF> inputPoints = new List<PointF>();
+
+        public static List<PointF> InputPoints
+        {
+            get { return inputPoints; }
+            set { inputPoints = value; }
+        }
 
         public static void DrawEllipses()
         {
@@ -21,13 +28,13 @@ namespace TestApplication
             Graphics.DrawLine(new Pen(Color.Black), CenterX, 0, CenterX, 2*CenterY);
             Graphics.DrawLine(new Pen(Color.Black), 2*CenterX, 0, 0, 2*CenterY);
 
-            Graphics.DrawEllipse(new Pen(Color.Green), CenterX - Radius * 0.2f, CenterY - Radius * 0.2f,
+            Graphics.DrawEllipse(new Pen(Color.Green), CenterX - Radius*0.2f, CenterY - Radius*0.2f,
                 Radius*0.4f, Radius*0.4f);
 
-            Graphics.DrawEllipse(new Pen(Color.Chocolate), CenterX - Radius * 0.3f, CenterY - Radius * 0.3f,
+            Graphics.DrawEllipse(new Pen(Color.Chocolate), CenterX - Radius*0.3f, CenterY - Radius*0.3f,
                 Radius*0.6f, Radius*0.6f);
 
-            Graphics.DrawEllipse(new Pen(Color.BlueViolet), CenterX - Radius * 0.4f, CenterY - Radius * 0.4f,
+            Graphics.DrawEllipse(new Pen(Color.BlueViolet), CenterX - Radius*0.4f, CenterY - Radius*0.4f,
                 Radius*0.8f, Radius*0.8f);
 
             Graphics.DrawEllipse(new Pen(Color.Chocolate), CenterX - Radius*0.5f, CenterY - Radius*0.5f,
@@ -50,7 +57,7 @@ namespace TestApplication
 
         public static void DrawNewElement(Point point)
         {
-            PointF pointF = new PointF((point.X - CenterX + 0.0f) / Radius, (CenterY - point.Y + 0.0f) / Radius);
+            PointF pointF = new PointF((point.X - CenterX + 0.0f)/Radius, (CenterY - point.Y + 0.0f)/Radius);
             GetSimpleAngle(pointF);
             bool isnewPoint = true;
             for (int i = 0; i < InputPoints.Count; i++)
@@ -62,22 +69,26 @@ namespace TestApplication
                     InputPoints[i] = pointF;
                     isnewPoint = false;
                 }
-                Graphics.DrawLine(new Pen(Color.Crimson), CenterX, CenterY, (InputPoints[i].X * Radius) + CenterX, (InputPoints[i].Y * -Radius) + CenterY);
-                Graphics.FillEllipse(new SolidBrush(Color.DarkRed), new RectangleF((InputPoints[i].X * Radius) + CenterX, (InputPoints[i].Y * -Radius) + CenterY, 5, 5));
+                Graphics.DrawLine(new Pen(Color.Crimson), CenterX, CenterY, (InputPoints[i].X*Radius) + CenterX,
+                    (InputPoints[i].Y*-Radius) + CenterY);
+                Graphics.FillEllipse(new SolidBrush(Color.DarkRed),
+                    new RectangleF((InputPoints[i].X*Radius) + CenterX, (InputPoints[i].Y*-Radius) + CenterY, 5, 5));
             }
             if (isnewPoint)
             {
                 InputPoints.Add(pointF);
-                Graphics.DrawLine(new Pen(Color.Crimson), CenterX, CenterY, (pointF.X * Radius) + CenterX, (pointF.Y * -Radius) + CenterY);
-                Graphics.FillEllipse(new SolidBrush(Color.DarkRed), new RectangleF((pointF.X * Radius) + CenterX, (pointF.Y * -Radius) + CenterY, 5, 5));
+                Graphics.DrawLine(new Pen(Color.Crimson), CenterX, CenterY, (pointF.X*Radius) + CenterX,
+                    (pointF.Y*-Radius) + CenterY);
+                Graphics.FillEllipse(new SolidBrush(Color.DarkRed),
+                    new RectangleF((pointF.X*Radius) + CenterX, (pointF.Y*-Radius) + CenterY, 5, 5));
             }
         }
 
         public static int GetSimpleAngle(PointF inputPoint)
         {
             double angle = Math.Atan2(inputPoint.Y, inputPoint.X);
-            if (angle < 0) angle += (Math.PI * 2);
-            return (int)(angle / Math.PI * 4);
+            if (angle < 0) angle += (Math.PI*2);
+            return (int) (angle/Math.PI*4);
         }
     }
 }
