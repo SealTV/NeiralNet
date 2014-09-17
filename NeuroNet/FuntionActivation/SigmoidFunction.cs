@@ -1,15 +1,35 @@
-﻿namespace NeuronNet
+﻿using System;
+
+namespace NeuronNet.FunctionActivation
 {
     /// <summary>
-    /// Activation function interface
+    /// Sigmoid activation function
     /// </summary>
-    /// 
-    /// <remarks>All activation functions, which are supposed to be used with
-    /// neurons, which calculate their output as a function of weighted sum of
-    /// their inputs, should implement this interfaces.
+    ///
+    /// <remarks>The class represents sigmoid activation function with
+    /// the next expression:<br />
+    /// <code>
+    ///                1
+    /// f(x) = ------------------
+    ///        1 + exp(-alpha * x)
+    ///
+    ///           alpha * exp(-alpha * x )
+    /// f'(x) = ---------------------------- = alpha * f(x) * (1 - f(x))
+    ///           (1 + exp(-alpha * x))^2
+    /// </code>
+    /// Output range of the function: <b>[0, 1]</b><br /><br />
+    /// Functions graph:<br />
+    /// <img src="sigmoid.bmp" width="242" height="172" />
     /// </remarks>
-    public interface IActivationFunction
+    public class SigmoidFunction : IActivationFunction
     {
+        private readonly double alpha;
+
+        public SigmoidFunction(double a)
+        {
+            alpha = a;
+        }
+
         /// <summary>
         /// Calculates function value
         /// </summary>
@@ -20,7 +40,10 @@
         ///
         /// <remarks>The method calculates function value at point <b>x</b>.</remarks>
         ///
-        double Function(double value);
+        public double Function(double value)
+        {
+            return (1/(1+Math.Exp(-alpha*value)));
+        }
 
 
         /// <summary>
@@ -33,7 +56,12 @@
         /// 
         /// <remarks>The method calculates function derivative at point <b>x</b>.</remarks>
         ///
-        double Derivative(double x);
+        public double Derivative(double x)
+        {
+            double y = Function(x);
+
+            return (alpha * y * (1 - y));
+        }
 
         /// <summary>
         /// Calculates function derivative
@@ -51,6 +79,9 @@
         /// function value, as derivative value, so they can seve the amount of
         /// calculations using this method to calculate derivative)</i></remarks>
         /// 
-        double Derivative2(double y);
+        public double Derivative2(double y)
+        {
+            return (alpha * y * (1 - y));
+        }	
     }
 }

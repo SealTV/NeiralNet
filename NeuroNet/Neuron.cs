@@ -7,10 +7,33 @@ namespace NeuronNet
     {
         public Link[] InputLinks;
 
+        /// <summary>
+        /// Threshold value
+        /// </summary>
+        /// 
+        /// <remarks>The value is added to inputs weighted sum.</remarks>
+        /// 
+        protected double threshold = 0.0f;
+
+        public double Threshold
+        {
+            get { return this.threshold; }
+            set { this.threshold = value; }
+        }
+
         private readonly IActivationFunction activationFunction;
         private double rawValue;
 
+        public double this[int index]
+        {
+            get { return InputLinks[index].Weight; }
+            set { InputLinks[index].Weight = value; }
+        }
 
+        public IActivationFunction ActivationFunction
+        {
+            get { return this.activationFunction; }
+        }
         public Neuron(IActivationFunction activationFunction)
         {
             this.activationFunction = activationFunction;
@@ -41,7 +64,8 @@ namespace NeuronNet
         public double GetResutValue()
         {
             double result = InputLinks.Sum(inputLink => inputLink.GetResultValue());
-            return activationFunction.GetValue(result);
+            result += threshold;
+            return activationFunction.Function(result);
         }
 
         public double GetValuesFromInputLinks()

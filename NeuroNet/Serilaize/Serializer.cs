@@ -13,19 +13,19 @@ namespace NeuronNet.Serialize
             };
 
             JSONArray array = new JSONArray();
-            for (int i = 0; i < net.Layers.Length; i++)
+            for (int i = 0; i < net.LayersCount; i++)
             {
-                array.Add(i.ToString(), new JSONData(net.Layers[i].NeuronsCountInLayer));
+                array.Add(i.ToString(), new JSONData(net[i].NeuronsCount));
             }
             json.Add(SerializeConfig.NeuronsInLayers, array);
 
             JSONArray weights = new JSONArray();
-            for (int i = 0; i < net.Layers.Length; i++)
+            for (int i = 0; i < net.LayersCount; i++)
             {
                 JSONArray layersArray = new JSONArray();
-                for (int j = 0; j < net.Layers[i].NeuronsCountInLayer; j++)
+                for (int j = 0; j < net[i].NeuronsCount; j++)
                 {
-                    double[] neuronWeights = net.Layers[i].LayerNeurons[j].GetWeights();
+                    double[] neuronWeights = net[i][j].GetWeights();
                     JSONArray neuronsWeightsJsonArray = new JSONArray();
                     for (int k = 0; k < neuronWeights.Length; k++)
                     {

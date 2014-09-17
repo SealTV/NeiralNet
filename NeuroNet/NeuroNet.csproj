@@ -40,13 +40,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BackPropagationLearning.cs" />
     <Compile Include="Example.cs" />
     <Compile Include="FuntionActivation\FunctionsFactory.cs" />
     <Compile Include="FuntionActivation\ActivationFunctionType.cs" />
-    <Compile Include="FuntionActivation\HiperbalTangens.cs" />
-    <Compile Include="FuntionActivation\Sigma.cs" />
-    <Compile Include="FuntionActivation\SimpleTest.cs" />
+    <Compile Include="FuntionActivation\ThresholdFunction.cs" />
+    <Compile Include="FuntionActivation\SigmoidFunction.cs" />
+    <Compile Include="FuntionActivation\BipolarSigmoidFunction.cs" />
     <Compile Include="IActivationFunction.cs" />
+    <Compile Include="ISupervisedLearning .cs" />
     <Compile Include="Layer.cs" />
     <Compile Include="Link.cs" />
     <Compile Include="NeuralNetwork.cs" />

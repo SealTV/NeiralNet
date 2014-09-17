@@ -69,15 +69,15 @@ namespace TestApplication
 
         private void UpdateNetInfoFields()
         {
-            LayersCountTextBox.Text = neuralNetData.NET.Layers.Length.ToString();
+            LayersCountTextBox.Text = neuralNetData.NET.LayersCount.ToString();
             string result = string.Empty;
-            if (neuralNetData.NET.Layers.Length > 0)
+            if (neuralNetData.NET.LayersCount > 0)
             {
-                for (int i = 0; i < neuralNetData.NET.Layers.Length - 1; i++)
+                for (int i = 0; i < neuralNetData.NET.LayersCount - 1; i++)
                 {
-                    result += neuralNetData.NET.Layers[i].LayerNeurons.Length.ToString() + ',';
+                    result += neuralNetData.NET[i].NeuronsCount.ToString() + ',';
                 }
-                result += neuralNetData.NET.Layers[neuralNetData.NET.Layers.Length - 1].LayerNeurons.Length.ToString();
+                result += neuralNetData.NET[neuralNetData.NET.LayersCount - 1].NeuronsCount.ToString();
             }
             NeuronsInLayersTextBox.Text = result;
             ActivationFunckType.SelectedItem = this.neuralNetData.NET.Type;

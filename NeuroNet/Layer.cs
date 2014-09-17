@@ -5,8 +5,8 @@ namespace NeuronNet
 {
     public class Layer
     {
-        public Neuron[] LayerNeurons;
-        public int NeuronsCountInLayer
+        private Neuron[] LayerNeurons;
+        public int NeuronsCount
         {
             get {
                 if (LayerNeurons == null)
@@ -15,6 +15,11 @@ namespace NeuronNet
                 }
                 return LayerNeurons.Length;
             }
+        }
+
+        public Neuron this[int index]
+        {
+            get { return LayerNeurons[index]; }
         }
 
         private LayerType LayerType;

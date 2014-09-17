@@ -9,11 +9,11 @@ namespace NeuronNet.FunctionActivation
             switch (type)
             {
                 case ActivationFunctionType.HiberBallTangens:
-                    return new HiperbalTangens(alpha);
+                    return new ThresholdFunction();
                 case ActivationFunctionType.Sigma:
-                    return new Sigma(alpha);
+                    return new SigmoidFunction(alpha);
                 case ActivationFunctionType.SimpleTest:
-                    return new SimpleTest();
+                    return new BipolarSigmoidFunction();
                 default:
                     throw new Exception("Unknown Activation Function Type");
             }
