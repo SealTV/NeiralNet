@@ -32,7 +32,7 @@ namespace TestApplication
         public ProgressBar LearnProgressBar { get; set; }
         public BackgroundWorker BackgroundWorker { get; set; }
 
-        public void LearnNeuralNet()
+        public void CheckNeuralNet()
         {
             var example = new Example
             {
@@ -73,11 +73,11 @@ namespace TestApplication
             ExamplesListBox.Update();
         }
 
-        public void Learn( object sender)
+        public void Learn(object sender)
         {
-            BackgroundWorker worker = sender as BackgroundWorker;
+            BackgroundWorker = sender as BackgroundWorker;
             Learning = new BackPropagationLearning(this.NeuralNetDataHelper.Network);
-            double error = 100;
+            double error;
             do
             {
                 //foreach (var example in this.ExampleHelper.Examples)

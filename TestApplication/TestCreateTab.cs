@@ -67,10 +67,11 @@ namespace TestApplication
                 if (string.IsNullOrEmpty(this.inputBoxes[i].Text)) return;
                 example.OutputValues[i] = double.Parse(this.outputBoxes[i].Text.Replace('.', ','));
             }
+            SelectExample();
             this.ExamplesDataHelper.Examples.Add(example);
-            ExamplesListBox.Items.Add(Serializer.SerializeExample(example));
+            int index = ExamplesListBox.Items.Add(Serializer.SerializeExample(example));
+            ExamplesListBox.SelectedIndex = index;
         }
-
 
         public void AddGeneratedTest()
         {
@@ -100,25 +101,20 @@ namespace TestApplication
             double resultAngle = (Math.Atan2(y, x) + Math.PI);
             resultAngle /= (Math.PI * 2);
 
-            //todo: remove this debug code! 
-            Console.WriteLine(resultAngle);
-
-            int j = 0;
-            foreach (TextBox inputBox in this.inputBoxes)
+            for (int i = 0; i < this.inputBoxes.Length; i++)
             {
-                inputBox.Text = example.InputValues[j++].ToString();
+                this.inputBoxes[i].Text = example.InputValues[i].ToString();
             }
             example.OutputValues[0] = 1 - resultR;
             example.OutputValues[1] = resultAngle;
 
-            j = 0;
-            foreach (TextBox outputBox in this.outputBoxes)
+            for (int i = 0; i < this.outputBoxes.Length; i++)
             {
-                outputBox.Text = example.OutputValues[j++].ToString();
+                outputBoxes[i].Text = example.OutputValues[i].ToString();
             }
         }
 
-        public void SaveTests()
+        public void SaveTest()
         {
             var example = new Example
             {
@@ -138,6 +134,8 @@ namespace TestApplication
                 example.OutputValues[i] = double.Parse(this.outputBoxes[i].Text.Replace('.', ','));
             }
             var index = ExamplesListBox.SelectedIndex;
+            if(index < 0 ) return;
+
             this.ExamplesDataHelper.Examples[index] = example;
             ExamplesListBox.Items[index] = Serializer.SerializeExample(example);
         }
@@ -151,7 +149,6 @@ namespace TestApplication
             if (ExamplesListBox.Items.Count > 0)
                 ExamplesListBox.SelectedIndex = 0;
         }
-
 
         public void GenerateTests()
         {

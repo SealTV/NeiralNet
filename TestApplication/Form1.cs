@@ -57,39 +57,38 @@ namespace TestApplication
             this.exampleHelper = new ExamplesDataHelper();
             var inputBoxes = new[] { inputBox1, inputBox2, inputBox3, inputBox4, inputBox5, inputBox6, inputBox7, inputBox8 };
             var outputBoxes = new[] { outputBox1, outputBox2 };
-            testCreateTab = new TestCreateTab(exampleHelper, inputBoxes, outputBoxes);
-            testCreateTab.TestPictureBox = testPictureBox;
-            testCreateTab.ExamplesListBox = examplesListBox;
+            testCreateTab = new TestCreateTab(exampleHelper, inputBoxes, outputBoxes)
+            {
+                TestPictureBox = testPictureBox,
+                ExamplesListBox = examplesListBox
+            };
 
             var testInputBoxes = new[] {textBox1, textBox2, textBox3, textBox4, textBox5, textBox6, textBox7, textBox8};
-            var testOutputBoxes = new[] {textBox9, textBox10};
-
-          
-            learningNetTab = new LearningNetTab();
-            learningNetTab.ExampleHelper = exampleHelper;
-            learningNetTab.NeuralNetDataHelper = neuralNetDataHelper;
-            learningNetTab.TestInputBoxes = testInputBoxes;
-            learningNetTab.TestOutputBoxes = testOutputBoxes;
-            learningNetTab.TestInputBoxes = testInputBoxes;
-            learningNetTab.ExamplesListBox = examplesListBox;
-            learningNetTab.TestListBox = testListBox;
-            learningNetTab.CorrectLabel = correctLable;
-            learningNetTab.OutLabel1 = outLable1;
-            learningNetTab.OutLabel2 = outLable2;
-            learningNetTab.LearnSpeedtextBox = learnSpeedtextBox;
-            learningNetTab.StepCountTextBox = stepCountTextBox;
-            learningNetTab.BackgroundWorker = backgroundWorker;
-            learningNetTab.LearnProgressBar = learnProgressBar;
+            var testOutputBoxes = new[] {textBox9, textBox10};     
+            learningNetTab = new LearningNetTab
+            {
+                ExampleHelper = exampleHelper,
+                NeuralNetDataHelper = neuralNetDataHelper,
+                TestOutputBoxes = testOutputBoxes,
+                TestInputBoxes = testInputBoxes,
+                ExamplesListBox = examplesListBox,
+                TestListBox = testListBox,
+                CorrectLabel = correctLable,
+                OutLabel1 = outLable1,
+                OutLabel2 = outLable2,
+                LearnSpeedtextBox = learnSpeedtextBox,
+                StepCountTextBox = stepCountTextBox,
+                BackgroundWorker = backgroundWorker,
+                LearnProgressBar = learnProgressBar
+            };
         }
 
         private void KeyPressTextBox(object sender, KeyPressEventArgs e)
         {
-            if (!(Char.IsDigit(e.KeyChar) || (e.KeyChar != '.' || e.KeyChar != ',')))
+            if (Char.IsDigit(e.KeyChar) || (e.KeyChar != '.' || e.KeyChar != ',')) return;
+            if (e.KeyChar != (char)Keys.Back)
             {
-                if (e.KeyChar != (char)Keys.Back)
-                {
-                    e.Handled = true;
-                }
+                e.Handled = true;
             }
         }
 
@@ -129,7 +128,7 @@ namespace TestApplication
 
         private void SaveTestButton_Click(object sender, EventArgs e)
         {
-            this.testCreateTab.SaveTests();
+            this.testCreateTab.SaveTest();
         }
 
         private void SaveTestsButton_Click(object sender, EventArgs e)
@@ -179,7 +178,7 @@ namespace TestApplication
     
         private void checkButton_Click(object sender, EventArgs e)
         {
-            this.learningNetTab.LearnNeuralNet();
+            this.learningNetTab.CheckNeuralNet();
         }
 
         
@@ -212,6 +211,7 @@ namespace TestApplication
             for (int i = 0; i < 100; i++)
             {
                 this.testCreateTab.GenerateTests();
+                this.testCreateTab.AddTest();
             }
         }
 

@@ -66,8 +66,25 @@ namespace NeuronNet
         /// <returns></returns>
         public double[] NextStep(double[] inputValues)
         {
-            var result = new double[0];
-            return result;
+
+            double[] tempResult = new double[layers[0].NeuronsCount];
+            for (int i = 0; i < inputValues.Length; i++)
+            {
+                layers[0][i].SetInputVector(new []{inputValues[i]});
+                tempResult[i] = layers[0][i].GetResutValue();
+
+            }
+            for (int i = 1; i < LayersCount; i++)
+            {
+                double[] tempResult2 = new double[layers[i].NeuronsCount];
+                for (int j = 0; j < layers[i].NeuronsCount; j++)
+                {
+                    layers[i][j].SetInputVector(tempResult);
+                    tempResult2[j] = layers[i][j].GetResutValue();
+                }
+                tempResult = tempResult2;
+            }
+            return tempResult;
         }
     }
 

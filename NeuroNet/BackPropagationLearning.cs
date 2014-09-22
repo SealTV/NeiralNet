@@ -90,7 +90,7 @@ namespace NeuroNet
                 // for each neuron
                 for (int j = 0; j < layer.NeuronsCount; j++)
                 {
-                    weightsUpdates[i][j] = new double[layer.NeuronsCount];
+                    weightsUpdates[i][j] = new double[layer[0].InputLinks.Length];
                 }
             }
         }

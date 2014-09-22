@@ -11,8 +11,6 @@ namespace TestApplication
 {
     public class NetCreateTab
     {
-        private NeuralNetwork neuronNet;
-
         public NeuralNetDataHelper NeuralNetDataHelper { get; set; }
         public TextBox AlphaValueTextBox { get; set; }
         public ComboBox ActivationFunckType { get; set; }
@@ -23,24 +21,23 @@ namespace TestApplication
         {
             this.NeuralNetDataHelper = neuralNetDataHelper;
             this.NeuralNetDataHelper.LoadNeuralNet();
-            this.neuronNet = this.NeuralNetDataHelper.Network;
         }
 
         public void UpdateNetInfoFields()
         {
-            LayersCountTextBox.Text = neuronNet.LayersCount.ToString();
+            LayersCountTextBox.Text = this.NeuralNetDataHelper.Network.LayersCount.ToString();
             string result = string.Empty;
-            if (neuronNet.LayersCount > 0)
+            if (this.NeuralNetDataHelper.Network.LayersCount > 0)
             {
-                for (int i = 0; i < neuronNet.LayersCount - 1; i++)
+                for (int i = 0; i < this.NeuralNetDataHelper.Network.LayersCount - 1; i++)
                 {
-                    result += neuronNet[i].NeuronsCount.ToString() + ',';
+                    result += this.NeuralNetDataHelper.Network[i].NeuronsCount.ToString() + ',';
                 }
-                result += neuronNet[neuronNet.LayersCount - 1].NeuronsCount.ToString();
+                result += this.NeuralNetDataHelper.Network[this.NeuralNetDataHelper.Network.LayersCount - 1].NeuronsCount.ToString();
             }
             NeuronsInLayersTextBox.Text = result;
-            ActivationFunckType.SelectedItem = this.neuronNet.Type;
-            AlphaValueTextBox.Text = this.neuronNet.Alpha.ToString();
+            ActivationFunckType.SelectedItem = this.NeuralNetDataHelper.Network.Type;
+            AlphaValueTextBox.Text = this.NeuralNetDataHelper.Network.Alpha.ToString();
         }
 
 
@@ -73,8 +70,7 @@ namespace TestApplication
                 return;
             }
 
-            neuronNet = new NeuralNetwork(neuronsInLayer, activationFunctionType, alpha);
-            this.NeuralNetDataHelper.Network = neuronNet;
+            this.NeuralNetDataHelper.Network = new NeuralNetwork(neuronsInLayer, activationFunctionType, alpha);
             this.NeuralNetDataHelper.SaveNeuralNet();
 
         }
