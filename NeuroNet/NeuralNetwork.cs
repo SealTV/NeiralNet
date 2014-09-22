@@ -1,5 +1,4 @@
-﻿using System;
-using NeuronNet.FunctionActivation;
+﻿using NeuronNet.FunctionActivation;
 
 namespace NeuronNet
 {
@@ -69,39 +68,6 @@ namespace NeuronNet
         {
             var result = new double[0];
             return result;
-        }
-
-        public void BackPropagation(Example example, double learningSpeed, int count)
-        {
-            if (example.InputValues.Length != this.layers[0].NeuronsCount ||
-                example.OutputValues.Length != this.layers[this.layers.Length - 1].NeuronsCount)
-            {
-                throw new ArgumentOutOfRangeException("Illegal example parameters.");
-            }
-
-            double[] output = NextStep(example.InputValues);
-            for (int i = 0; i < output.Length; i++)
-            {
-                if (Math.Abs(output[i] - example.OutputValues[i]) > 0.001d)
-                {
-                    for (int numberOfLayer = 0; numberOfLayer < this.layers.Length  -1; numberOfLayer++)
-                    {
-                        for (int numOfNeuron = 0; numOfNeuron < this.layers[numberOfLayer].NeuronsCount; numOfNeuron++)
-                        {
-                            Neuron currentInputNeuron = this.layers[numberOfLayer][numberOfLayer];
-                            for (int numOfWeight = 0; numOfWeight < currentInputNeuron.GetWeights().Length; numOfWeight++)
-                            {
-                                //currentInputNeuron.InputLinks[i].Weight = currentInputNeuron.InputLinks[i].Weight + example.
-                            }
-                        }
-                    }
-                }
-            }
-        }
-
-        public void TeachNeuronNet(Example example, double speed)
-        {
-            throw new System.NotImplementedException();
         }
     }
 

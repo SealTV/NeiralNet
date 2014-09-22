@@ -55,9 +55,12 @@
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="GraphicsDrawer.cs" />
+    <Compile Include="LearningNetTab.cs" />
+    <Compile Include="NetCreateTab.cs" />
     <Compile Include="NeuralNetData\NeuralNetDataHelper.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TestCreateTab.cs" />
     <Compile Include="ViewsUpdater.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>

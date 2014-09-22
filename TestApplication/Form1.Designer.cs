@@ -96,7 +96,7 @@ namespace TestApplication
             this.learnProgressBar = new System.Windows.Forms.ProgressBar();
             this.testListBox = new System.Windows.Forms.ListBox();
             this.stepCountTextBox = new System.Windows.Forms.TextBox();
-            this.lernSpeedtextBox = new System.Windows.Forms.TextBox();
+            this.learnSpeedtextBox = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
@@ -291,7 +291,7 @@ namespace TestApplication
             this.button3.TabIndex = 24;
             this.button3.Text = "Сгенерить 100";
             this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            this.button3.Click += new System.EventHandler(this.generateMultyTests_ButtonClick);
             // 
             // button2
             // 
@@ -346,7 +346,7 @@ namespace TestApplication
             this.addTestButton2.UseVisualStyleBackColor = true;
             this.addTestButton2.Click += new System.EventHandler(this.addTestButton2_Click);
             // 
-            // testPictureBox
+            // TestPictureBox
             // 
             this.testPictureBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.testPictureBox.Location = new System.Drawing.Point(503, 144);
@@ -511,7 +511,7 @@ namespace TestApplication
             this.inputBox1.Enter += new System.EventHandler(this.textBox_Enter);
             this.inputBox1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.KeyPressTextBox);
             // 
-            // examplesListBox
+            // ExamplesListBox
             // 
             this.examplesListBox.FormattingEnabled = true;
             this.examplesListBox.HorizontalScrollbar = true;
@@ -546,7 +546,7 @@ namespace TestApplication
             this.tabPage3.Controls.Add(this.learnProgressBar);
             this.tabPage3.Controls.Add(this.testListBox);
             this.tabPage3.Controls.Add(this.stepCountTextBox);
-            this.tabPage3.Controls.Add(this.lernSpeedtextBox);
+            this.tabPage3.Controls.Add(this.learnSpeedtextBox);
             this.tabPage3.Controls.Add(this.label12);
             this.tabPage3.Controls.Add(this.label9);
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
@@ -555,7 +555,6 @@ namespace TestApplication
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Обучение";
             this.tabPage3.UseVisualStyleBackColor = true;
-            this.tabPage3.Click += new System.EventHandler(this.tabPage3_Click);
             // 
             // saveButton
             // 
@@ -600,9 +599,8 @@ namespace TestApplication
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(305, 445);
             this.panel1.TabIndex = 22;
-            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
-            // correctLable
+            // CorrectLabel
             // 
             this.correctLable.AutoSize = true;
             this.correctLable.BackColor = System.Drawing.Color.Red;
@@ -677,7 +675,7 @@ namespace TestApplication
             this.textBox6.Text = "1";
             this.textBox6.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.KeyPressTextBox);
             // 
-            // outLable2
+            // OutLabel2
             // 
             this.outLable2.AutoSize = true;
             this.outLable2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
@@ -685,7 +683,7 @@ namespace TestApplication
             this.outLable2.Name = "outLable2";
             this.outLable2.Size = new System.Drawing.Size(56, 15);
             this.outLable2.TabIndex = 5;
-            this.outLable2.Text = "outLable2";
+            this.outLable2.Text = "OutLabel2";
             // 
             // label15
             // 
@@ -714,7 +712,7 @@ namespace TestApplication
             this.textBox7.Text = "1";
             this.textBox7.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.KeyPressTextBox);
             // 
-            // outLable1
+            // OutLabel1
             // 
             this.outLable1.AutoSize = true;
             this.outLable1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
@@ -722,7 +720,7 @@ namespace TestApplication
             this.outLable1.Name = "outLable1";
             this.outLable1.Size = new System.Drawing.Size(56, 15);
             this.outLable1.TabIndex = 1;
-            this.outLable1.Text = "outLable1";
+            this.outLable1.Text = "OutLabel1";
             // 
             // label11
             // 
@@ -751,14 +749,14 @@ namespace TestApplication
             this.textBox8.Text = "1";
             this.textBox8.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.KeyPressTextBox);
             // 
-            // learnProgressBar
+            // LearnProgressBar
             // 
             this.learnProgressBar.Location = new System.Drawing.Point(10, 313);
             this.learnProgressBar.Name = "learnProgressBar";
             this.learnProgressBar.Size = new System.Drawing.Size(416, 23);
             this.learnProgressBar.TabIndex = 21;
             // 
-            // testListBox
+            // TestListBox
             // 
             this.testListBox.FormattingEnabled = true;
             this.testListBox.HorizontalScrollbar = true;
@@ -767,7 +765,7 @@ namespace TestApplication
             this.testListBox.Size = new System.Drawing.Size(416, 238);
             this.testListBox.TabIndex = 20;
             // 
-            // stepCountTextBox
+            // StepCountTextBox
             // 
             this.stepCountTextBox.Location = new System.Drawing.Point(179, 30);
             this.stepCountTextBox.Name = "stepCountTextBox";
@@ -776,14 +774,14 @@ namespace TestApplication
             this.stepCountTextBox.Text = "10000";
             this.stepCountTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.KeyPressTextBox);
             // 
-            // lernSpeedtextBox
+            // LearnSpeedtextBox
             // 
-            this.lernSpeedtextBox.Location = new System.Drawing.Point(10, 29);
-            this.lernSpeedtextBox.Name = "lernSpeedtextBox";
-            this.lernSpeedtextBox.Size = new System.Drawing.Size(100, 20);
-            this.lernSpeedtextBox.TabIndex = 17;
-            this.lernSpeedtextBox.Text = "1";
-            this.lernSpeedtextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.KeyPressTextBox);
+            this.learnSpeedtextBox.Location = new System.Drawing.Point(10, 29);
+            this.learnSpeedtextBox.Name = "learnSpeedtextBox";
+            this.learnSpeedtextBox.Size = new System.Drawing.Size(100, 20);
+            this.learnSpeedtextBox.TabIndex = 17;
+            this.learnSpeedtextBox.Text = "1";
+            this.learnSpeedtextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.KeyPressTextBox);
             // 
             // label12
             // 
@@ -811,7 +809,7 @@ namespace TestApplication
             // 
             this.openFileDialog2.FileName = "openFileDialog2";
             // 
-            // backgroundWorker
+            // BackgroundWorker
             // 
             this.backgroundWorker.WorkerReportsProgress = true;
             this.backgroundWorker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker_DoWork);
@@ -896,7 +894,7 @@ namespace TestApplication
         private System.Windows.Forms.ProgressBar learnProgressBar;
         private System.Windows.Forms.ListBox testListBox;
         private System.Windows.Forms.TextBox stepCountTextBox;
-        private System.Windows.Forms.TextBox lernSpeedtextBox;
+        private System.Windows.Forms.TextBox learnSpeedtextBox;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;

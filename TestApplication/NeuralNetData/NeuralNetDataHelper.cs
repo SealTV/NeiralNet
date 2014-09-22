@@ -9,7 +9,7 @@ namespace TestApplication.NeuralNetData
 {
     public class NeuralNetDataHelper
     {
-        public NeuralNetwork NET;
+        public NeuralNetwork Network;
 
         public ActivationFunctionType ActivationFunctionType;
         public void LoadNeuralNet()
@@ -22,7 +22,7 @@ namespace TestApplication.NeuralNetData
                 var data = reader.ReadToEnd();
                 if (string.IsNullOrEmpty(data)) return;
                 //Console.WriteLine(data);
-                this.NET = Deserializer.DeserializeNet(data);
+                this.Network = Deserializer.DeserializeNet(data);
                 stream.Close();
             }
             catch (Exception exc)
@@ -38,7 +38,7 @@ namespace TestApplication.NeuralNetData
 
         public void SaveNeuralNet()
         {
-            var data = Serializer.SerializeNet(this.NET);
+            var data = Serializer.SerializeNet(this.Network);
             File.WriteAllText("NeuralNet.json", data, Encoding.Unicode);
         }
     }

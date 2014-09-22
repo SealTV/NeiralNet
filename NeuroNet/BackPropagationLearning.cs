@@ -125,15 +125,12 @@ namespace NeuroNet
         /// Runs learning epoch
         /// </summary>
         /// 
-        /// <param name="input">array of input vectors</param>
-        /// <param name="output">array of output vectors</param>
-        /// 
+        /// <param name="examples">Array of input and output values</param>
         /// <returns>Returns sum of squared errors of the last layer divided by 2</returns>
         /// 
         /// <remarks>Runs series of learning iterations - one iteration
         /// for each input sample. Updates neuron's weights after each sample
         /// presented.</remarks>
-        /// 
         public double RunEpoch(Example[] examples)
         {
             double error = 0.0;
