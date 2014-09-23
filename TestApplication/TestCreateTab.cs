@@ -73,7 +73,7 @@ namespace TestApplication
             ExamplesListBox.SelectedIndex = index;
         }
 
-        public void AddGeneratedTest()
+        public void AddCreatedTest()
         {
             Example example = new Example
             {
@@ -85,17 +85,17 @@ namespace TestApplication
                 example.InputValues[i] = 1f;
             }
 
-            PointF centre = new PointF(0, 0);
+            PointF center = new PointF(0, 0);
             foreach (PointF inputPoint in GraphicsDrawer.InputPoints)
             {
                 double magnitude = Math.Sqrt(inputPoint.X * inputPoint.X + inputPoint.Y * inputPoint.Y);
                 double Angle = (((GraphicsDrawer.GetSimpleAngle(inputPoint) / 8f) + 0.0625f) * 2 * Math.PI);
-                centre.X += (float)(Math.Cos(Angle) * magnitude);
-                centre.Y += (float)(Math.Sin(Angle) * magnitude);
+                center.X += (float)(Math.Cos(Angle) * magnitude);
+                center.Y += (float)(Math.Sin(Angle) * magnitude);
                 example.InputValues[GraphicsDrawer.GetSimpleAngle(inputPoint)] = magnitude;
             }
-            var x = (centre.X / GraphicsDrawer.InputPoints.Count);
-            var y = (centre.Y / GraphicsDrawer.InputPoints.Count);
+            var x = (center.X / GraphicsDrawer.InputPoints.Count);
+            var y = (center.Y / GraphicsDrawer.InputPoints.Count);
             var resultR = Math.Sqrt(x * x + y * y);
 
             double resultAngle = (Math.Atan2(y, x) + Math.PI);
@@ -152,6 +152,44 @@ namespace TestApplication
 
         public void GenerateTests()
         {
+            Example example = new Example
+            {
+                InputValues = new double[this.inputBoxes.Length],
+                OutputValues = new double[this.outputBoxes.Length]
+            };
+            for (int i = 0; i < example.InputValues.Length; i++)
+            {
+                example.InputValues[i] = 1f;
+            }
+
+            PointF center = new PointF(0, 0);
+            foreach (PointF inputPoint in GraphicsDrawer.InputPoints)
+            {
+                double magnitude = Math.Sqrt(inputPoint.X * inputPoint.X + inputPoint.Y * inputPoint.Y);
+                double Angle = (((GraphicsDrawer.GetSimpleAngle(inputPoint) / 8f) + 0.0625f) * 2 * Math.PI);
+                center.X += (float)(Math.Cos(Angle) * magnitude);
+                center.Y += (float)(Math.Sin(Angle) * magnitude);
+                example.InputValues[GraphicsDrawer.GetSimpleAngle(inputPoint)] = magnitude;
+            }
+            var x = (center.X / GraphicsDrawer.InputPoints.Count);
+            var y = (center.Y / GraphicsDrawer.InputPoints.Count);
+            var resultR = Math.Sqrt(x * x + y * y);
+
+            double resultAngle = (Math.Atan2(y, x) + Math.PI);
+            resultAngle /= (Math.PI * 2);
+
+            for (int i = 0; i < this.inputBoxes.Length; i++)
+            {
+                this.inputBoxes[i].Text = example.InputValues[i].ToString();
+            }
+            example.OutputValues[0] = 1 - resultR;
+            example.OutputValues[1] = resultAngle;
+
+            for (int i = 0; i < this.outputBoxes.Length; i++)
+            {
+                outputBoxes[i].Text = example.OutputValues[i].ToString();
+            }
+
             PictureBox pictureBox = this.TestPictureBox;
             Graphics graphics = pictureBox.CreateGraphics();
             graphics.Clear(Color.White);
@@ -161,52 +199,19 @@ namespace TestApplication
             Random rnd = new Random();
             for (int j = 0; j < 8; j++)
             {
-
                 Point point = new Point(rnd.Next(0, 2) * 2 - 1, rnd.Next(0, 2) * 2 - 1);
+                double r = Math.Sqrt(Math.Pow(point.X, 2) + Math.Pow(point.Y, 2));
+                if (!(r < 1)) continue;
+
                 GraphicsDrawer.DrawNewElement(point);
-                var r = Math.Sqrt(Math.Pow(point.X, 2) + Math.Pow(point.Y, 2));
-                if (r < 1)
-                {
-                    graphics.Clear(Color.White);
-                    GraphicsDrawer.DrawEllipses();
-                    Console.WriteLine("{0} {1}", point, r);
-                    GraphicsDrawer.GetSimpleAngle(point);
-                    bool isnewPoint = true;
-                    for (int i = 0; i < GraphicsDrawer.InputPoints.Count; i++)
-                    {
 
-
-                        if (GraphicsDrawer.GetSimpleAngle(GraphicsDrawer.InputPoints[i])
-                            == GraphicsDrawer.GetSimpleAngle(point))
-                        {
-                            GraphicsDrawer.InputPoints[i] = point;
-                            isnewPoint = false;
-                        }
-                        graphics.DrawLine(new Pen(Color.Crimson), GraphicsDrawer.CenterX, GraphicsDrawer.CenterY,
-                                          (GraphicsDrawer.InputPoints[i].X * GraphicsDrawer.Radius)
-                                          + GraphicsDrawer.CenterX,
-                                          (GraphicsDrawer.InputPoints[i].Y * -GraphicsDrawer.Radius)
-                                          + GraphicsDrawer.CenterY);
-                        graphics.FillEllipse(new SolidBrush(Color.DarkRed),
-                                             new RectangleF(
-                                                             (GraphicsDrawer.InputPoints[i].X * GraphicsDrawer.Radius)
-                                                             + GraphicsDrawer.CenterX,
-                                                             (GraphicsDrawer.InputPoints[i].Y * -GraphicsDrawer.Radius)
-                                                             + GraphicsDrawer.CenterY, 5, 5));
-                    }
-                    if (isnewPoint)
-                    {
-                        GraphicsDrawer.InputPoints.Add(point);
-                        graphics.DrawLine(new Pen(Color.Crimson), GraphicsDrawer.CenterX, GraphicsDrawer.CenterY,
-                                          (point.X * GraphicsDrawer.Radius) + GraphicsDrawer.CenterX,
-                                          (point.Y * -GraphicsDrawer.Radius) + GraphicsDrawer.CenterY);
-                        graphics.FillEllipse(new SolidBrush(Color.DarkRed),
-                                             new RectangleF((point.X * GraphicsDrawer.Radius) + GraphicsDrawer.CenterX,
-                                                            (point.Y * -GraphicsDrawer.Radius) + GraphicsDrawer.CenterY, 5, 5));
-                    }
-                }
+                graphics.Clear(Color.White);
+             
+                GraphicsDrawer.DrawEllipses();
+                Console.WriteLine("{0} {1}", point, r);
+                GraphicsDrawer.GetSimpleAngle(point);
             }
-            this.AddGeneratedTest();
+            this.AddCreatedTest();
         }
 
         public void SetActive()

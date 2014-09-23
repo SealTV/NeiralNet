@@ -184,15 +184,24 @@ namespace TestApplication
         
         private void pictureBox1_MouseClick(object sender, MouseEventArgs e)
         {
+            
             Point point = new Point(e.X, e.Y);
-            GraphicsDrawer.DrawNewElement(point);
+            GraphicsDrawer.DrawEllipses();
+            if (e.Button == MouseButtons.Right)
+            {
+                GraphicsDrawer.RemoveElement(point);
+            }
+            else 
+                GraphicsDrawer.DrawNewElement(point);
+
+            this.testCreateTab.AddCreatedTest();
         }
 
        
 
         private void addTestButton2_Click(object sender, EventArgs e)
         {
-            this.testCreateTab.AddGeneratedTest();
+            this.testCreateTab.AddCreatedTest();
         }
 
         private void cleanButton_Click(object sender, EventArgs e)

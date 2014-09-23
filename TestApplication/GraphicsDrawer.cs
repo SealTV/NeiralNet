@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Linq;
 
 namespace TestApplication
 {
-    public class GraphicsDrawer
+    public static class GraphicsDrawer
     {
         public static Graphics Graphics { get; set; }
         public static float CenterX { get; set; }
@@ -58,12 +59,10 @@ namespace TestApplication
         public static void DrawNewElement(Point point)
         {
             PointF pointF = new PointF((point.X - CenterX + 0.0f)/Radius, (CenterY - point.Y + 0.0f)/Radius);
-            GetSimpleAngle(pointF);
+
             bool isnewPoint = true;
             for (int i = 0; i < InputPoints.Count; i++)
             {
-
-
                 if (GetSimpleAngle(InputPoints[i]) == GetSimpleAngle(pointF))
                 {
                     InputPoints[i] = pointF;
@@ -74,13 +73,32 @@ namespace TestApplication
                 Graphics.FillEllipse(new SolidBrush(Color.DarkRed),
                     new RectangleF((InputPoints[i].X*Radius) + CenterX, (InputPoints[i].Y*-Radius) + CenterY, 5, 5));
             }
-            if (isnewPoint)
+            if (!isnewPoint) return;
+            InputPoints.Add(pointF);
+            Graphics.DrawLine(new Pen(Color.Crimson), CenterX, CenterY, (pointF.X*Radius) + CenterX,
+                (pointF.Y*-Radius) + CenterY);
+            Graphics.FillEllipse(new SolidBrush(Color.DarkRed),
+                new RectangleF((pointF.X*Radius) + CenterX, (pointF.Y*-Radius) + CenterY, 5, 5));
+        }
+
+        public static void RemoveElement(Point point)
+        {
+            PointF pointF = new PointF((point.X - CenterX + 0.0f) / Radius, (CenterY - point.Y + 0.0f) / Radius);
+
+            PointF turgetToRemovePoint = new PointF();
+            foreach (PointF inputPoint in InputPoints.Where(inputPoint => GetSimpleAngle(inputPoint) == GetSimpleAngle(pointF)))
             {
-                InputPoints.Add(pointF);
-                Graphics.DrawLine(new Pen(Color.Crimson), CenterX, CenterY, (pointF.X*Radius) + CenterX,
-                    (pointF.Y*-Radius) + CenterY);
+                turgetToRemovePoint = inputPoint;
+                break;
+            }
+
+            InputPoints.Remove(turgetToRemovePoint);
+            foreach (PointF t in InputPoints)
+            {
+                Graphics.DrawLine(new Pen(Color.Crimson), CenterX, CenterY, (t.X * Radius) + CenterX,
+                    (t.Y * -Radius) + CenterY);
                 Graphics.FillEllipse(new SolidBrush(Color.DarkRed),
-                    new RectangleF((pointF.X*Radius) + CenterX, (pointF.Y*-Radius) + CenterY, 5, 5));
+                    new RectangleF((t.X * Radius) + CenterX, (t.Y * -Radius) + CenterY, 5, 5));
             }
         }
 

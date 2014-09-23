@@ -75,11 +75,14 @@ namespace TestApplication
 
         public void Learn(object sender)
         {
-            BackgroundWorker = sender as BackgroundWorker;
+            //BackgroundWorker = sender as BackgroundWorker;
             Learning = new BackPropagationLearning(this.NeuralNetDataHelper.Network);
             double error;
-            do
-            {
+            int k = 0;
+            int l = 0;
+            double lastError = 0;
+            //for (int i = 0; i < 1000; i++)
+            do{
                 //foreach (var example in this.ExampleHelper.Examples)
                 //{
 
@@ -90,10 +93,26 @@ namespace TestApplication
                 error = Learning.RunEpoch(this.ExampleHelper.Examples.ToArray());
 
                 speed *= 0.9999f;
-
-                Console.WriteLine();
+                if (k == 1000)
+                {
+                    Console.WriteLine(error);
+                    k = 0;
+                    if (lastError == error)
+                    {
+                        l++;
+                    }
+                    else
+                    {
+                        l = 0;
+                        lastError = error;
+                    }
+                }
+                else
+                {
+                    k++;
+                }
                 //if (worker != null) worker.ReportProgress(i);
-            } while (error > 1);
+            } while (l != 5);
         }
 
         public void StartLearn()

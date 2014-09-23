@@ -13,18 +13,18 @@ namespace NeuroNet
     /// 
     public class BackPropagationLearning : ISupervisedLearning
     {
-        private NeuralNetwork network;
+        private readonly NeuralNetwork network;
         // learning rate
         private double learningRate = 0.1;
         // momentum
         private double momentum = 0.0;
 
         // neuron's errors
-        private double[][] neuronErrors = null;
+        private readonly double[][] neuronErrors = null;
         // weight's updates
-        private double[][][] weightsUpdates = null;
+        private readonly double[][][] weightsUpdates = null;
         // threshold's updates
-        private double[][] thresholdsUpdates = null;
+        private readonly double[][] thresholdsUpdates = null;
 
         /// <summary>
         /// Learning rate
