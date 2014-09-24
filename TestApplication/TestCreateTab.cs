@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Linq;
 using System.Windows.Forms;
 using NeuronNet;
 using NeuronNet.Serialize;
@@ -80,33 +81,33 @@ namespace TestApplication
                 InputValues = new double[this.inputBoxes.Length],
                 OutputValues = new double[this.outputBoxes.Length]
             };
-            for (int i = 0; i < example.InputValues.Length; i++)
+            for (int i = 0; i < example.InputValues.Length / 2; i++)
             {
-                example.InputValues[i] = 1f;
+                example.InputValues[2 * i] = (float)Math.Cos(Math.PI * (i + 1) / 4f);
+                example.InputValues[2 * i + 1] = (float)Math.Sin(Math.PI * (i + 1) / 4f);
             }
 
             PointF center = new PointF(0, 0);
-            foreach (PointF inputPoint in GraphicsDrawer.InputPoints)
+            for (int i = 0; i < GraphicsDrawer.InputPoints.Count; i++)
             {
-                double magnitude = Math.Sqrt(inputPoint.X * inputPoint.X + inputPoint.Y * inputPoint.Y);
-                double Angle = (((GraphicsDrawer.GetSimpleAngle(inputPoint) / 8f) + 0.0625f) * 2 * Math.PI);
-                center.X += (float)(Math.Cos(Angle) * magnitude);
-                center.Y += (float)(Math.Sin(Angle) * magnitude);
-                example.InputValues[GraphicsDrawer.GetSimpleAngle(inputPoint)] = magnitude;
+                example.InputValues[2 * i] = GraphicsDrawer.InputPoints[i].X / 2 + 0.5f;
+                example.InputValues[2 * i + 1] = GraphicsDrawer.InputPoints[i].Y / 2 + 0.5f;
+
+                center.X += 2 * ((float)example.InputValues[2 * i] - 0.5f);
+                center.Y += 2 * ((float)example.InputValues[2 * i + 1] - 0.5f);
             }
+
             var x = (center.X / GraphicsDrawer.InputPoints.Count);
             var y = (center.Y / GraphicsDrawer.InputPoints.Count);
-            var resultR = Math.Sqrt(x * x + y * y);
 
-            double resultAngle = (Math.Atan2(y, x) + Math.PI);
-            resultAngle /= (Math.PI * 2);
+            example.OutputValues[0] = x + 0.5f;
+            example.OutputValues[1] = y + 0.5f;
+
 
             for (int i = 0; i < this.inputBoxes.Length; i++)
             {
                 this.inputBoxes[i].Text = example.InputValues[i].ToString();
             }
-            example.OutputValues[0] = 1 - resultR;
-            example.OutputValues[1] = resultAngle;
 
             for (int i = 0; i < this.outputBoxes.Length; i++)
             {
@@ -134,7 +135,7 @@ namespace TestApplication
                 example.OutputValues[i] = double.Parse(this.outputBoxes[i].Text.Replace('.', ','));
             }
             var index = ExamplesListBox.SelectedIndex;
-            if(index < 0 ) return;
+            if (index < 0) return;
 
             this.ExamplesDataHelper.Examples[index] = example;
             ExamplesListBox.Items[index] = Serializer.SerializeExample(example);
@@ -206,7 +207,7 @@ namespace TestApplication
                 GraphicsDrawer.DrawNewElement(point);
 
                 graphics.Clear(Color.White);
-             
+
                 GraphicsDrawer.DrawEllipses();
                 Console.WriteLine("{0} {1}", point, r);
                 GraphicsDrawer.GetSimpleAngle(point);
@@ -232,8 +233,12 @@ namespace TestApplication
 
         public void CleanDrawBox()
         {
-            GraphicsDrawer.DrawEllipses();
             GraphicsDrawer.InputPoints.Clear();
+            for (int i = 0; i < 8; i++)
+            {
+                GraphicsDrawer.InputPoints.Add(new PointF((float)Math.Cos(Math.PI * (i + 1.5) / 4f), (float)Math.Sin(Math.PI * (i + 1.5) / 4f)));
+            }
+            GraphicsDrawer.ReDraw();
         }
     }
 }

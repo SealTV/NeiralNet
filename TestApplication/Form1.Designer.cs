@@ -44,6 +44,40 @@ namespace TestApplication
             this.CreateNetButton = new System.Windows.Forms.Button();
             this.NeuronsInLayersTextBox = new System.Windows.Forms.TextBox();
             this.LayersCountTextBox = new System.Windows.Forms.TextBox();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.inputBox16 = new System.Windows.Forms.TextBox();
+            this.DeeleteRowButton = new System.Windows.Forms.Button();
+            this.inputBox15 = new System.Windows.Forms.TextBox();
+            this.inputBox14 = new System.Windows.Forms.TextBox();
+            this.inputBox13 = new System.Windows.Forms.TextBox();
+            this.inputBox12 = new System.Windows.Forms.TextBox();
+            this.inputBox11 = new System.Windows.Forms.TextBox();
+            this.inputBox10 = new System.Windows.Forms.TextBox();
+            this.inputBox9 = new System.Windows.Forms.TextBox();
+            this.button3 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.cleanButton = new System.Windows.Forms.Button();
+            this.addTestButton2 = new System.Windows.Forms.Button();
+            this.testPictureBox = new System.Windows.Forms.PictureBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.SaveTestButton = new System.Windows.Forms.Button();
+            this.SaveTestsButton = new System.Windows.Forms.Button();
+            this.AddTestButton = new System.Windows.Forms.Button();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.outputBox2 = new System.Windows.Forms.TextBox();
+            this.inputBox8 = new System.Windows.Forms.TextBox();
+            this.outputBox1 = new System.Windows.Forms.TextBox();
+            this.inputBox4 = new System.Windows.Forms.TextBox();
+            this.inputBox7 = new System.Windows.Forms.TextBox();
+            this.inputBox6 = new System.Windows.Forms.TextBox();
+            this.inputBox3 = new System.Windows.Forms.TextBox();
+            this.inputBox2 = new System.Windows.Forms.TextBox();
+            this.inputBox5 = new System.Windows.Forms.TextBox();
+            this.inputBox1 = new System.Windows.Forms.TextBox();
+            this.examplesListBox = new System.Windows.Forms.ListBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.saveButton = new System.Windows.Forms.Button();
             this.teachbutton = new System.Windows.Forms.Button();
@@ -75,38 +109,12 @@ namespace TestApplication
             this.openFileDialog2 = new System.Windows.Forms.OpenFileDialog();
             this.saveFileDialog2 = new System.Windows.Forms.SaveFileDialog();
             this.backgroundWorker = new System.ComponentModel.BackgroundWorker();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.examplesListBox = new System.Windows.Forms.ListBox();
-            this.inputBox1 = new System.Windows.Forms.TextBox();
-            this.inputBox5 = new System.Windows.Forms.TextBox();
-            this.inputBox2 = new System.Windows.Forms.TextBox();
-            this.inputBox3 = new System.Windows.Forms.TextBox();
-            this.inputBox6 = new System.Windows.Forms.TextBox();
-            this.inputBox7 = new System.Windows.Forms.TextBox();
-            this.inputBox4 = new System.Windows.Forms.TextBox();
-            this.outputBox1 = new System.Windows.Forms.TextBox();
-            this.inputBox8 = new System.Windows.Forms.TextBox();
-            this.outputBox2 = new System.Windows.Forms.TextBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.AddTestButton = new System.Windows.Forms.Button();
-            this.SaveTestsButton = new System.Windows.Forms.Button();
-            this.DeeleteRowButton = new System.Windows.Forms.Button();
-            this.SaveTestButton = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.testPictureBox = new System.Windows.Forms.PictureBox();
-            this.addTestButton2 = new System.Windows.Forms.Button();
-            this.cleanButton = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
+            this.tabPage2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.testPictureBox)).BeginInit();
             this.tabPage3.SuspendLayout();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.testPictureBox)).BeginInit();
-            this.tabPage2.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -117,7 +125,7 @@ namespace TestApplication
             this.tabControl1.Location = new System.Drawing.Point(12, 12);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1519, 537);
+            this.tabControl1.Size = new System.Drawing.Size(1519, 613);
             this.tabControl1.TabIndex = 0;
             this.tabControl1.SelectedIndexChanged += new System.EventHandler(this.tabControl1_SelectedIndexChanged);
             // 
@@ -137,7 +145,7 @@ namespace TestApplication
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(1511, 511);
+            this.tabPage1.Size = new System.Drawing.Size(1511, 587);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Нейронная сеть";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -242,6 +250,337 @@ namespace TestApplication
             this.LayersCountTextBox.TabIndex = 0;
             this.LayersCountTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.KeyPressTextBox);
             // 
+            // tabPage2
+            // 
+            this.tabPage2.Controls.Add(this.inputBox16);
+            this.tabPage2.Controls.Add(this.DeeleteRowButton);
+            this.tabPage2.Controls.Add(this.inputBox15);
+            this.tabPage2.Controls.Add(this.inputBox14);
+            this.tabPage2.Controls.Add(this.inputBox13);
+            this.tabPage2.Controls.Add(this.inputBox12);
+            this.tabPage2.Controls.Add(this.inputBox11);
+            this.tabPage2.Controls.Add(this.inputBox10);
+            this.tabPage2.Controls.Add(this.inputBox9);
+            this.tabPage2.Controls.Add(this.button3);
+            this.tabPage2.Controls.Add(this.button2);
+            this.tabPage2.Controls.Add(this.cleanButton);
+            this.tabPage2.Controls.Add(this.addTestButton2);
+            this.tabPage2.Controls.Add(this.testPictureBox);
+            this.tabPage2.Controls.Add(this.button1);
+            this.tabPage2.Controls.Add(this.SaveTestButton);
+            this.tabPage2.Controls.Add(this.SaveTestsButton);
+            this.tabPage2.Controls.Add(this.AddTestButton);
+            this.tabPage2.Controls.Add(this.label8);
+            this.tabPage2.Controls.Add(this.label7);
+            this.tabPage2.Controls.Add(this.outputBox2);
+            this.tabPage2.Controls.Add(this.inputBox8);
+            this.tabPage2.Controls.Add(this.outputBox1);
+            this.tabPage2.Controls.Add(this.inputBox4);
+            this.tabPage2.Controls.Add(this.inputBox7);
+            this.tabPage2.Controls.Add(this.inputBox6);
+            this.tabPage2.Controls.Add(this.inputBox3);
+            this.tabPage2.Controls.Add(this.inputBox2);
+            this.tabPage2.Controls.Add(this.inputBox5);
+            this.tabPage2.Controls.Add(this.inputBox1);
+            this.tabPage2.Controls.Add(this.examplesListBox);
+            this.tabPage2.Controls.Add(this.label6);
+            this.tabPage2.Controls.Add(this.comboBox2);
+            this.tabPage2.Location = new System.Drawing.Point(4, 22);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(1511, 587);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "Создание тестов";
+            this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // inputBox16
+            // 
+            this.inputBox16.Location = new System.Drawing.Point(326, 154);
+            this.inputBox16.Name = "inputBox16";
+            this.inputBox16.Size = new System.Drawing.Size(100, 20);
+            this.inputBox16.TabIndex = 32;
+            // 
+            // DeeleteRowButton
+            // 
+            this.DeeleteRowButton.Location = new System.Drawing.Point(11, 520);
+            this.DeeleteRowButton.Name = "DeeleteRowButton";
+            this.DeeleteRowButton.Size = new System.Drawing.Size(141, 23);
+            this.DeeleteRowButton.TabIndex = 14;
+            this.DeeleteRowButton.Text = "Удалить строку";
+            this.DeeleteRowButton.UseVisualStyleBackColor = true;
+            this.DeeleteRowButton.Click += new System.EventHandler(this.DeleteRowButton_Click);
+            // 
+            // inputBox15
+            // 
+            this.inputBox15.Location = new System.Drawing.Point(326, 128);
+            this.inputBox15.Name = "inputBox15";
+            this.inputBox15.Size = new System.Drawing.Size(100, 20);
+            this.inputBox15.TabIndex = 31;
+            // 
+            // inputBox14
+            // 
+            this.inputBox14.Location = new System.Drawing.Point(220, 154);
+            this.inputBox14.Name = "inputBox14";
+            this.inputBox14.Size = new System.Drawing.Size(100, 20);
+            this.inputBox14.TabIndex = 30;
+            // 
+            // inputBox13
+            // 
+            this.inputBox13.Location = new System.Drawing.Point(220, 128);
+            this.inputBox13.Name = "inputBox13";
+            this.inputBox13.Size = new System.Drawing.Size(100, 20);
+            this.inputBox13.TabIndex = 29;
+            // 
+            // inputBox12
+            // 
+            this.inputBox12.Location = new System.Drawing.Point(114, 154);
+            this.inputBox12.Name = "inputBox12";
+            this.inputBox12.Size = new System.Drawing.Size(100, 20);
+            this.inputBox12.TabIndex = 28;
+            // 
+            // inputBox11
+            // 
+            this.inputBox11.Location = new System.Drawing.Point(114, 128);
+            this.inputBox11.Name = "inputBox11";
+            this.inputBox11.Size = new System.Drawing.Size(100, 20);
+            this.inputBox11.TabIndex = 27;
+            // 
+            // inputBox10
+            // 
+            this.inputBox10.Location = new System.Drawing.Point(8, 154);
+            this.inputBox10.Name = "inputBox10";
+            this.inputBox10.Size = new System.Drawing.Size(100, 20);
+            this.inputBox10.TabIndex = 26;
+            // 
+            // inputBox9
+            // 
+            this.inputBox9.Location = new System.Drawing.Point(8, 128);
+            this.inputBox9.Name = "inputBox9";
+            this.inputBox9.Size = new System.Drawing.Size(100, 20);
+            this.inputBox9.TabIndex = 25;
+            // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(618, 89);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(135, 23);
+            this.button3.TabIndex = 24;
+            this.button3.Text = "Сгенерить 100";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.generateMultyTests_ButtonClick);
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(618, 60);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(135, 24);
+            this.button2.TabIndex = 23;
+            this.button2.Text = "Сгенерить";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.GenerateTest_Button_Click);
+            // 
+            // cleanButton
+            // 
+            this.cleanButton.Location = new System.Drawing.Point(615, 414);
+            this.cleanButton.Name = "cleanButton";
+            this.cleanButton.Size = new System.Drawing.Size(132, 23);
+            this.cleanButton.TabIndex = 22;
+            this.cleanButton.Text = "Очистить";
+            this.cleanButton.UseVisualStyleBackColor = true;
+            this.cleanButton.Click += new System.EventHandler(this.cleanButton_Click);
+            // 
+            // addTestButton2
+            // 
+            this.addTestButton2.Location = new System.Drawing.Point(615, 440);
+            this.addTestButton2.Name = "addTestButton2";
+            this.addTestButton2.Size = new System.Drawing.Size(132, 23);
+            this.addTestButton2.TabIndex = 18;
+            this.addTestButton2.Text = "Добавить тест";
+            this.addTestButton2.UseVisualStyleBackColor = true;
+            this.addTestButton2.Click += new System.EventHandler(this.addTestButton2_Click);
+            // 
+            // testPictureBox
+            // 
+            this.testPictureBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.testPictureBox.Location = new System.Drawing.Point(503, 144);
+            this.testPictureBox.Name = "testPictureBox";
+            this.testPictureBox.Size = new System.Drawing.Size(250, 250);
+            this.testPictureBox.TabIndex = 17;
+            this.testPictureBox.TabStop = false;
+            this.testPictureBox.MouseClick += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseClick);
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(138, 19);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(182, 23);
+            this.button1.TabIndex = 16;
+            this.button1.Text = "Сгенерировать тесты";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
+            // SaveTestButton
+            // 
+            this.SaveTestButton.Location = new System.Drawing.Point(581, 115);
+            this.SaveTestButton.Name = "SaveTestButton";
+            this.SaveTestButton.Size = new System.Drawing.Size(100, 23);
+            this.SaveTestButton.TabIndex = 12;
+            this.SaveTestButton.Text = "Сохранить тест";
+            this.SaveTestButton.UseVisualStyleBackColor = true;
+            this.SaveTestButton.Click += new System.EventHandler(this.SaveTestButton_Click);
+            // 
+            // SaveTestsButton
+            // 
+            this.SaveTestsButton.Location = new System.Drawing.Point(158, 520);
+            this.SaveTestsButton.Name = "SaveTestsButton";
+            this.SaveTestsButton.Size = new System.Drawing.Size(141, 23);
+            this.SaveTestsButton.TabIndex = 15;
+            this.SaveTestsButton.Text = "Сохранить все тесты";
+            this.SaveTestsButton.UseVisualStyleBackColor = true;
+            this.SaveTestsButton.Click += new System.EventHandler(this.SaveTestsButton_Click);
+            // 
+            // AddTestButton
+            // 
+            this.AddTestButton.Location = new System.Drawing.Point(500, 115);
+            this.AddTestButton.Name = "AddTestButton";
+            this.AddTestButton.Size = new System.Drawing.Size(75, 23);
+            this.AddTestButton.TabIndex = 11;
+            this.AddTestButton.Text = "Добавить новый элемент";
+            this.AddTestButton.UseVisualStyleBackColor = true;
+            this.AddTestButton.Click += new System.EventHandler(this.AddTestButton_Click);
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(500, 48);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(109, 13);
+            this.label8.TabIndex = 14;
+            this.label8.Text = "Выходные значения";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(11, 47);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(92, 13);
+            this.label7.TabIndex = 13;
+            this.label7.Text = "Входные данные";
+            // 
+            // outputBox2
+            // 
+            this.outputBox2.Location = new System.Drawing.Point(500, 89);
+            this.outputBox2.Name = "outputBox2";
+            this.outputBox2.Size = new System.Drawing.Size(109, 20);
+            this.outputBox2.TabIndex = 10;
+            this.outputBox2.Enter += new System.EventHandler(this.textBox_Enter);
+            // 
+            // inputBox8
+            // 
+            this.inputBox8.Location = new System.Drawing.Point(326, 92);
+            this.inputBox8.Name = "inputBox8";
+            this.inputBox8.Size = new System.Drawing.Size(100, 20);
+            this.inputBox8.TabIndex = 8;
+            this.inputBox8.Enter += new System.EventHandler(this.textBox_Enter);
+            // 
+            // outputBox1
+            // 
+            this.outputBox1.Location = new System.Drawing.Point(500, 63);
+            this.outputBox1.Name = "outputBox1";
+            this.outputBox1.Size = new System.Drawing.Size(109, 20);
+            this.outputBox1.TabIndex = 9;
+            this.outputBox1.Enter += new System.EventHandler(this.textBox_Enter);
+            this.outputBox1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.KeyPressTextBox);
+            // 
+            // inputBox4
+            // 
+            this.inputBox4.Location = new System.Drawing.Point(114, 92);
+            this.inputBox4.Name = "inputBox4";
+            this.inputBox4.Size = new System.Drawing.Size(100, 20);
+            this.inputBox4.TabIndex = 4;
+            this.inputBox4.Enter += new System.EventHandler(this.textBox_Enter);
+            this.inputBox4.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.KeyPressTextBox);
+            // 
+            // inputBox7
+            // 
+            this.inputBox7.Location = new System.Drawing.Point(326, 63);
+            this.inputBox7.Name = "inputBox7";
+            this.inputBox7.Size = new System.Drawing.Size(100, 20);
+            this.inputBox7.TabIndex = 7;
+            this.inputBox7.Enter += new System.EventHandler(this.textBox_Enter);
+            this.inputBox7.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.KeyPressTextBox);
+            // 
+            // inputBox6
+            // 
+            this.inputBox6.Location = new System.Drawing.Point(220, 92);
+            this.inputBox6.Name = "inputBox6";
+            this.inputBox6.Size = new System.Drawing.Size(100, 20);
+            this.inputBox6.TabIndex = 6;
+            this.inputBox6.Enter += new System.EventHandler(this.textBox_Enter);
+            this.inputBox6.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.KeyPressTextBox);
+            // 
+            // inputBox3
+            // 
+            this.inputBox3.Location = new System.Drawing.Point(114, 63);
+            this.inputBox3.Name = "inputBox3";
+            this.inputBox3.Size = new System.Drawing.Size(100, 20);
+            this.inputBox3.TabIndex = 3;
+            this.inputBox3.Enter += new System.EventHandler(this.textBox_Enter);
+            this.inputBox3.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.KeyPressTextBox);
+            // 
+            // inputBox2
+            // 
+            this.inputBox2.Location = new System.Drawing.Point(8, 89);
+            this.inputBox2.Name = "inputBox2";
+            this.inputBox2.Size = new System.Drawing.Size(100, 20);
+            this.inputBox2.TabIndex = 2;
+            this.inputBox2.Enter += new System.EventHandler(this.textBox_Enter);
+            this.inputBox2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.KeyPressTextBox);
+            // 
+            // inputBox5
+            // 
+            this.inputBox5.Location = new System.Drawing.Point(220, 64);
+            this.inputBox5.Name = "inputBox5";
+            this.inputBox5.Size = new System.Drawing.Size(100, 20);
+            this.inputBox5.TabIndex = 5;
+            this.inputBox5.Enter += new System.EventHandler(this.textBox_Enter);
+            this.inputBox5.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.KeyPressTextBox);
+            // 
+            // inputBox1
+            // 
+            this.inputBox1.Location = new System.Drawing.Point(8, 63);
+            this.inputBox1.Name = "inputBox1";
+            this.inputBox1.Size = new System.Drawing.Size(100, 20);
+            this.inputBox1.TabIndex = 1;
+            this.inputBox1.Enter += new System.EventHandler(this.textBox_Enter);
+            this.inputBox1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.KeyPressTextBox);
+            // 
+            // examplesListBox
+            // 
+            this.examplesListBox.FormattingEnabled = true;
+            this.examplesListBox.HorizontalScrollbar = true;
+            this.examplesListBox.Location = new System.Drawing.Point(3, 212);
+            this.examplesListBox.Name = "examplesListBox";
+            this.examplesListBox.Size = new System.Drawing.Size(470, 290);
+            this.examplesListBox.TabIndex = 13;
+            this.examplesListBox.SelectedIndexChanged += new System.EventHandler(this.examplesListBox_SelectedIndexChanged);
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(8, 3);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(71, 13);
+            this.label6.TabIndex = 1;
+            this.label6.Text = "Neuron Layer";
+            // 
+            // comboBox2
+            // 
+            this.comboBox2.FormattingEnabled = true;
+            this.comboBox2.Location = new System.Drawing.Point(11, 19);
+            this.comboBox2.Name = "comboBox2";
+            this.comboBox2.Size = new System.Drawing.Size(121, 21);
+            this.comboBox2.TabIndex = 0;
+            // 
             // tabPage3
             // 
             this.tabPage3.Controls.Add(this.saveButton);
@@ -255,7 +594,7 @@ namespace TestApplication
             this.tabPage3.Controls.Add(this.label9);
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(1511, 511);
+            this.tabPage3.Size = new System.Drawing.Size(1511, 587);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Обучение";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -520,291 +859,24 @@ namespace TestApplication
             this.backgroundWorker.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.backgroundWorker_ProgressChanged);
             this.backgroundWorker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorker_RunWorkerCompleted);
             // 
-            // comboBox2
-            // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(11, 19);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(121, 21);
-            this.comboBox2.TabIndex = 0;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(8, 3);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(71, 13);
-            this.label6.TabIndex = 1;
-            this.label6.Text = "Neuron Layer";
-            // 
-            // examplesListBox
-            // 
-            this.examplesListBox.FormattingEnabled = true;
-            this.examplesListBox.HorizontalScrollbar = true;
-            this.examplesListBox.Location = new System.Drawing.Point(8, 144);
-            this.examplesListBox.Name = "examplesListBox";
-            this.examplesListBox.Size = new System.Drawing.Size(489, 290);
-            this.examplesListBox.TabIndex = 13;
-            this.examplesListBox.SelectedIndexChanged += new System.EventHandler(this.examplesListBox_SelectedIndexChanged);
-            // 
-            // inputBox1
-            // 
-            this.inputBox1.Location = new System.Drawing.Point(8, 63);
-            this.inputBox1.Name = "inputBox1";
-            this.inputBox1.Size = new System.Drawing.Size(100, 20);
-            this.inputBox1.TabIndex = 1;
-            this.inputBox1.Enter += new System.EventHandler(this.textBox_Enter);
-            this.inputBox1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.KeyPressTextBox);
-            // 
-            // inputBox5
-            // 
-            this.inputBox5.Location = new System.Drawing.Point(8, 89);
-            this.inputBox5.Name = "inputBox5";
-            this.inputBox5.Size = new System.Drawing.Size(100, 20);
-            this.inputBox5.TabIndex = 5;
-            this.inputBox5.Enter += new System.EventHandler(this.textBox_Enter);
-            this.inputBox5.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.KeyPressTextBox);
-            // 
-            // inputBox2
-            // 
-            this.inputBox2.Location = new System.Drawing.Point(114, 63);
-            this.inputBox2.Name = "inputBox2";
-            this.inputBox2.Size = new System.Drawing.Size(100, 20);
-            this.inputBox2.TabIndex = 2;
-            this.inputBox2.Enter += new System.EventHandler(this.textBox_Enter);
-            this.inputBox2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.KeyPressTextBox);
-            // 
-            // inputBox3
-            // 
-            this.inputBox3.Location = new System.Drawing.Point(220, 63);
-            this.inputBox3.Name = "inputBox3";
-            this.inputBox3.Size = new System.Drawing.Size(100, 20);
-            this.inputBox3.TabIndex = 3;
-            this.inputBox3.Enter += new System.EventHandler(this.textBox_Enter);
-            this.inputBox3.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.KeyPressTextBox);
-            // 
-            // inputBox6
-            // 
-            this.inputBox6.Location = new System.Drawing.Point(114, 89);
-            this.inputBox6.Name = "inputBox6";
-            this.inputBox6.Size = new System.Drawing.Size(100, 20);
-            this.inputBox6.TabIndex = 6;
-            this.inputBox6.Enter += new System.EventHandler(this.textBox_Enter);
-            this.inputBox6.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.KeyPressTextBox);
-            // 
-            // inputBox7
-            // 
-            this.inputBox7.Location = new System.Drawing.Point(220, 89);
-            this.inputBox7.Name = "inputBox7";
-            this.inputBox7.Size = new System.Drawing.Size(100, 20);
-            this.inputBox7.TabIndex = 7;
-            this.inputBox7.Enter += new System.EventHandler(this.textBox_Enter);
-            this.inputBox7.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.KeyPressTextBox);
-            // 
-            // inputBox4
-            // 
-            this.inputBox4.Location = new System.Drawing.Point(326, 63);
-            this.inputBox4.Name = "inputBox4";
-            this.inputBox4.Size = new System.Drawing.Size(100, 20);
-            this.inputBox4.TabIndex = 4;
-            this.inputBox4.Enter += new System.EventHandler(this.textBox_Enter);
-            this.inputBox4.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.KeyPressTextBox);
-            // 
-            // outputBox1
-            // 
-            this.outputBox1.Location = new System.Drawing.Point(500, 63);
-            this.outputBox1.Name = "outputBox1";
-            this.outputBox1.Size = new System.Drawing.Size(109, 20);
-            this.outputBox1.TabIndex = 9;
-            this.outputBox1.Enter += new System.EventHandler(this.textBox_Enter);
-            this.outputBox1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.KeyPressTextBox);
-            // 
-            // inputBox8
-            // 
-            this.inputBox8.Location = new System.Drawing.Point(326, 89);
-            this.inputBox8.Name = "inputBox8";
-            this.inputBox8.Size = new System.Drawing.Size(100, 20);
-            this.inputBox8.TabIndex = 8;
-            this.inputBox8.Enter += new System.EventHandler(this.textBox_Enter);
-            // 
-            // outputBox2
-            // 
-            this.outputBox2.Location = new System.Drawing.Point(500, 89);
-            this.outputBox2.Name = "outputBox2";
-            this.outputBox2.Size = new System.Drawing.Size(109, 20);
-            this.outputBox2.TabIndex = 10;
-            this.outputBox2.Enter += new System.EventHandler(this.textBox_Enter);
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(11, 47);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(92, 13);
-            this.label7.TabIndex = 13;
-            this.label7.Text = "Входные данные";
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(500, 48);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(109, 13);
-            this.label8.TabIndex = 14;
-            this.label8.Text = "Выходные значения";
-            // 
-            // AddTestButton
-            // 
-            this.AddTestButton.Location = new System.Drawing.Point(500, 115);
-            this.AddTestButton.Name = "AddTestButton";
-            this.AddTestButton.Size = new System.Drawing.Size(75, 23);
-            this.AddTestButton.TabIndex = 11;
-            this.AddTestButton.Text = "Добавить новый элемент";
-            this.AddTestButton.UseVisualStyleBackColor = true;
-            this.AddTestButton.Click += new System.EventHandler(this.AddTestButton_Click);
-            // 
-            // SaveTestsButton
-            // 
-            this.SaveTestsButton.Location = new System.Drawing.Point(179, 458);
-            this.SaveTestsButton.Name = "SaveTestsButton";
-            this.SaveTestsButton.Size = new System.Drawing.Size(141, 23);
-            this.SaveTestsButton.TabIndex = 15;
-            this.SaveTestsButton.Text = "Сохранить все тесты";
-            this.SaveTestsButton.UseVisualStyleBackColor = true;
-            this.SaveTestsButton.Click += new System.EventHandler(this.SaveTestsButton_Click);
-            // 
-            // DeeleteRowButton
-            // 
-            this.DeeleteRowButton.Location = new System.Drawing.Point(32, 458);
-            this.DeeleteRowButton.Name = "DeeleteRowButton";
-            this.DeeleteRowButton.Size = new System.Drawing.Size(141, 23);
-            this.DeeleteRowButton.TabIndex = 14;
-            this.DeeleteRowButton.Text = "Удалить строку";
-            this.DeeleteRowButton.UseVisualStyleBackColor = true;
-            this.DeeleteRowButton.Click += new System.EventHandler(this.DeleteRowButton_Click);
-            // 
-            // SaveTestButton
-            // 
-            this.SaveTestButton.Location = new System.Drawing.Point(581, 115);
-            this.SaveTestButton.Name = "SaveTestButton";
-            this.SaveTestButton.Size = new System.Drawing.Size(100, 23);
-            this.SaveTestButton.TabIndex = 12;
-            this.SaveTestButton.Text = "Сохранить тест";
-            this.SaveTestButton.UseVisualStyleBackColor = true;
-            this.SaveTestButton.Click += new System.EventHandler(this.SaveTestButton_Click);
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(138, 19);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(182, 23);
-            this.button1.TabIndex = 16;
-            this.button1.Text = "Сгенерировать тесты";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
-            // testPictureBox
-            // 
-            this.testPictureBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.testPictureBox.Location = new System.Drawing.Point(503, 144);
-            this.testPictureBox.Name = "testPictureBox";
-            this.testPictureBox.Size = new System.Drawing.Size(250, 250);
-            this.testPictureBox.TabIndex = 17;
-            this.testPictureBox.TabStop = false;
-            this.testPictureBox.MouseClick += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseClick);
-            // 
-            // addTestButton2
-            // 
-            this.addTestButton2.Location = new System.Drawing.Point(615, 440);
-            this.addTestButton2.Name = "addTestButton2";
-            this.addTestButton2.Size = new System.Drawing.Size(132, 23);
-            this.addTestButton2.TabIndex = 18;
-            this.addTestButton2.Text = "Добавить тест";
-            this.addTestButton2.UseVisualStyleBackColor = true;
-            this.addTestButton2.Click += new System.EventHandler(this.addTestButton2_Click);
-            // 
-            // cleanButton
-            // 
-            this.cleanButton.Location = new System.Drawing.Point(615, 414);
-            this.cleanButton.Name = "cleanButton";
-            this.cleanButton.Size = new System.Drawing.Size(132, 23);
-            this.cleanButton.TabIndex = 22;
-            this.cleanButton.Text = "Очистить";
-            this.cleanButton.UseVisualStyleBackColor = true;
-            this.cleanButton.Click += new System.EventHandler(this.cleanButton_Click);
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(618, 60);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(135, 24);
-            this.button2.TabIndex = 23;
-            this.button2.Text = "Сгенерить";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.GenerateTest_Button_Click);
-            // 
-            // button3
-            // 
-            this.button3.Location = new System.Drawing.Point(618, 89);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(135, 23);
-            this.button3.TabIndex = 24;
-            this.button3.Text = "Сгенерить 100";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.generateMultyTests_ButtonClick);
-            // 
-            // tabPage2
-            // 
-            this.tabPage2.Controls.Add(this.button3);
-            this.tabPage2.Controls.Add(this.button2);
-            this.tabPage2.Controls.Add(this.cleanButton);
-            this.tabPage2.Controls.Add(this.addTestButton2);
-            this.tabPage2.Controls.Add(this.testPictureBox);
-            this.tabPage2.Controls.Add(this.button1);
-            this.tabPage2.Controls.Add(this.SaveTestButton);
-            this.tabPage2.Controls.Add(this.DeeleteRowButton);
-            this.tabPage2.Controls.Add(this.SaveTestsButton);
-            this.tabPage2.Controls.Add(this.AddTestButton);
-            this.tabPage2.Controls.Add(this.label8);
-            this.tabPage2.Controls.Add(this.label7);
-            this.tabPage2.Controls.Add(this.outputBox2);
-            this.tabPage2.Controls.Add(this.inputBox8);
-            this.tabPage2.Controls.Add(this.outputBox1);
-            this.tabPage2.Controls.Add(this.inputBox4);
-            this.tabPage2.Controls.Add(this.inputBox7);
-            this.tabPage2.Controls.Add(this.inputBox6);
-            this.tabPage2.Controls.Add(this.inputBox3);
-            this.tabPage2.Controls.Add(this.inputBox2);
-            this.tabPage2.Controls.Add(this.inputBox5);
-            this.tabPage2.Controls.Add(this.inputBox1);
-            this.tabPage2.Controls.Add(this.examplesListBox);
-            this.tabPage2.Controls.Add(this.label6);
-            this.tabPage2.Controls.Add(this.comboBox2);
-            this.tabPage2.Location = new System.Drawing.Point(4, 22);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(1511, 511);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "Создание тестов";
-            this.tabPage2.UseVisualStyleBackColor = true;
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(783, 548);
+            this.ClientSize = new System.Drawing.Size(828, 725);
             this.Controls.Add(this.tabControl1);
             this.Name = "Form1";
             this.Text = "Form1";
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
+            this.tabPage2.ResumeLayout(false);
+            this.tabPage2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.testPictureBox)).EndInit();
             this.tabPage3.ResumeLayout(false);
             this.tabPage3.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.testPictureBox)).EndInit();
-            this.tabPage2.ResumeLayout(false);
-            this.tabPage2.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -881,6 +953,14 @@ namespace TestApplication
         private System.Windows.Forms.ListBox examplesListBox;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.TextBox inputBox16;
+        private System.Windows.Forms.TextBox inputBox15;
+        private System.Windows.Forms.TextBox inputBox14;
+        private System.Windows.Forms.TextBox inputBox13;
+        private System.Windows.Forms.TextBox inputBox12;
+        private System.Windows.Forms.TextBox inputBox11;
+        private System.Windows.Forms.TextBox inputBox10;
+        private System.Windows.Forms.TextBox inputBox9;
     }
 }
 

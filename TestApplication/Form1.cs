@@ -10,11 +10,11 @@ namespace TestApplication
 {
     public partial class Form1 : Form
     {
-        
+
         private ExamplesDataHelper exampleHelper;
         private NeuralNetDataHelper neuralNetDataHelper;
 
-        
+
         private NetCreateTab netCreateTab;
         private TestCreateTab testCreateTab;
         private LearningNetTab learningNetTab;
@@ -55,7 +55,7 @@ namespace TestApplication
 
 
             this.exampleHelper = new ExamplesDataHelper();
-            var inputBoxes = new[] { inputBox1, inputBox2, inputBox3, inputBox4, inputBox5, inputBox6, inputBox7, inputBox8 };
+            var inputBoxes = new[] { inputBox1, inputBox2, inputBox3, inputBox4, inputBox5, inputBox6, inputBox7, inputBox8, inputBox9, inputBox10, inputBox11, inputBox12, inputBox13, inputBox14, inputBox15, inputBox16 };
             var outputBoxes = new[] { outputBox1, outputBox2 };
             testCreateTab = new TestCreateTab(exampleHelper, inputBoxes, outputBoxes)
             {
@@ -63,8 +63,8 @@ namespace TestApplication
                 ExamplesListBox = examplesListBox
             };
 
-            var testInputBoxes = new[] {textBox1, textBox2, textBox3, textBox4, textBox5, textBox6, textBox7, textBox8};
-            var testOutputBoxes = new[] {textBox9, textBox10};     
+            var testInputBoxes = new[] { textBox1, textBox2, textBox3, textBox4, textBox5, textBox6, textBox7, textBox8 };
+            var testOutputBoxes = new[] { textBox9, textBox10 };
             learningNetTab = new LearningNetTab
             {
                 ExampleHelper = exampleHelper,
@@ -175,29 +175,29 @@ namespace TestApplication
             learnProgressBar.Value = 0;
             learnProgressBar.Update();
         }
-    
+
         private void checkButton_Click(object sender, EventArgs e)
         {
             this.learningNetTab.CheckNeuralNet();
         }
 
-        
+
         private void pictureBox1_MouseClick(object sender, MouseEventArgs e)
         {
-            
+
             Point point = new Point(e.X, e.Y);
             GraphicsDrawer.DrawEllipses();
             if (e.Button == MouseButtons.Right)
             {
                 GraphicsDrawer.RemoveElement(point);
             }
-            else 
+            else
                 GraphicsDrawer.DrawNewElement(point);
 
             this.testCreateTab.AddCreatedTest();
         }
 
-       
+
 
         private void addTestButton2_Click(object sender, EventArgs e)
         {
@@ -207,6 +207,7 @@ namespace TestApplication
         private void cleanButton_Click(object sender, EventArgs e)
         {
             this.testCreateTab.CleanDrawBox();
+            
         }
 
 
@@ -223,6 +224,8 @@ namespace TestApplication
                 this.testCreateTab.AddTest();
             }
         }
+
+
 
     }
 }

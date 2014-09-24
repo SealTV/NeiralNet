@@ -14,6 +14,17 @@ namespace TestApplication
 
         private static List<PointF> inputPoints = new List<PointF>();
 
+        public static void ReDraw()
+        {
+            DrawEllipses();
+            for (int i = 0; i < InputPoints.Count; i++)
+            {
+                Graphics.DrawLine(new Pen(Color.Crimson), CenterX, CenterY, (InputPoints[i].X * Radius) + CenterX,
+                    (InputPoints[i].Y * -Radius) + CenterY);
+                Graphics.FillEllipse(new SolidBrush(Color.DarkRed),
+                    new RectangleF((InputPoints[i].X * Radius) + CenterX, (InputPoints[i].Y * -Radius) + CenterY, 5, 5));
+            }
+        }
         public static List<PointF> InputPoints
         {
             get { return inputPoints; }

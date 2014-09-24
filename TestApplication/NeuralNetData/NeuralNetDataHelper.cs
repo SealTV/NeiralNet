@@ -12,6 +12,11 @@ namespace TestApplication.NeuralNetData
         public NeuralNetwork Network;
 
         public ActivationFunctionType ActivationFunctionType;
+
+        public NeuralNetDataHelper()
+        {
+            Network=new NeuralNetwork(new int[]{},ActivationFunctionType.Sigma,1);
+        }
         public void LoadNeuralNet()
         {
             Stream stream = null;
