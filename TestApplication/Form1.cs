@@ -57,7 +57,8 @@ namespace TestApplication
             this.exampleHelper = new ExamplesDataHelper();
             var inputBoxes = new[] { inputBox1, inputBox2, inputBox3, inputBox4, inputBox5, inputBox6, inputBox7, inputBox8, inputBox9, inputBox10, inputBox11, inputBox12, inputBox13, inputBox14, inputBox15, inputBox16 };
             var outputBoxes = new[] { outputBox1, outputBox2 };
-            testCreateTab = new TestCreateTab(exampleHelper, inputBoxes, outputBoxes)
+            var neuroOutputBoxes = new[] { neuroOutputBox1,neuroOutputBox2 };
+            testCreateTab = new TestCreateTab(exampleHelper, inputBoxes, outputBoxes, neuroOutputBoxes)
             {
                 TestPictureBox = testPictureBox,
                 ExamplesListBox = examplesListBox
@@ -194,14 +195,14 @@ namespace TestApplication
             else
                 GraphicsDrawer.DrawNewElement(point);
 
-            this.testCreateTab.AddCreatedTest();
+            this.testCreateTab.AddCreatedTest(neuralNetDataHelper.Network);
         }
 
 
 
         private void addTestButton2_Click(object sender, EventArgs e)
         {
-            this.testCreateTab.AddCreatedTest();
+            this.testCreateTab.AddCreatedTest(neuralNetDataHelper.Network);
         }
 
         private void cleanButton_Click(object sender, EventArgs e)
@@ -213,14 +214,14 @@ namespace TestApplication
 
         private void GenerateTest_Button_Click(object sender, EventArgs e)
         {
-            this.testCreateTab.GenerateTests();
+            this.testCreateTab.GenerateTests(neuralNetDataHelper.Network);
         }
 
         private void generateMultyTests_ButtonClick(object sender, EventArgs e)
         {
             for (int i = 0; i < 100; i++)
             {
-                this.testCreateTab.GenerateTests();
+                this.testCreateTab.GenerateTests(neuralNetDataHelper.Network);
                 this.testCreateTab.AddTest();
             }
         }

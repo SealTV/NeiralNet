@@ -109,6 +109,9 @@ namespace TestApplication
             this.openFileDialog2 = new System.Windows.Forms.OpenFileDialog();
             this.saveFileDialog2 = new System.Windows.Forms.SaveFileDialog();
             this.backgroundWorker = new System.ComponentModel.BackgroundWorker();
+            this.neuroOutputBox1 = new System.Windows.Forms.TextBox();
+            this.neuroOutputBox2 = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -252,6 +255,9 @@ namespace TestApplication
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.label3);
+            this.tabPage2.Controls.Add(this.neuroOutputBox2);
+            this.tabPage2.Controls.Add(this.neuroOutputBox1);
             this.tabPage2.Controls.Add(this.inputBox16);
             this.tabPage2.Controls.Add(this.DeeleteRowButton);
             this.tabPage2.Controls.Add(this.inputBox15);
@@ -859,11 +865,34 @@ namespace TestApplication
             this.backgroundWorker.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.backgroundWorker_ProgressChanged);
             this.backgroundWorker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorker_RunWorkerCompleted);
             // 
+            // neuroOutputBox1
+            // 
+            this.neuroOutputBox1.Location = new System.Drawing.Point(789, 60);
+            this.neuroOutputBox1.Name = "neuroOutputBox1";
+            this.neuroOutputBox1.Size = new System.Drawing.Size(100, 20);
+            this.neuroOutputBox1.TabIndex = 33;
+            // 
+            // neuroOutputBox2
+            // 
+            this.neuroOutputBox2.Location = new System.Drawing.Point(789, 89);
+            this.neuroOutputBox2.Name = "neuroOutputBox2";
+            this.neuroOutputBox2.Size = new System.Drawing.Size(100, 20);
+            this.neuroOutputBox2.TabIndex = 34;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(786, 47);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(135, 13);
+            this.label3.TabIndex = 35;
+            this.label3.Text = "После работы нейросети";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(828, 725);
+            this.ClientSize = new System.Drawing.Size(972, 725);
             this.Controls.Add(this.tabControl1);
             this.Name = "Form1";
             this.Text = "Form1";
@@ -961,6 +990,9 @@ namespace TestApplication
         private System.Windows.Forms.TextBox inputBox11;
         private System.Windows.Forms.TextBox inputBox10;
         private System.Windows.Forms.TextBox inputBox9;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox neuroOutputBox2;
+        private System.Windows.Forms.TextBox neuroOutputBox1;
     }
 }
 

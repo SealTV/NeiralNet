@@ -6,6 +6,7 @@ using System.Windows.Forms;
 using NeuronNet;
 using NeuronNet.Serialize;
 using TestApplication.ExamplesData;
+using TestApplication.NeuralNetData;
 
 namespace TestApplication
 {
@@ -13,17 +14,19 @@ namespace TestApplication
     {
         private readonly TextBox[] inputBoxes;
         private readonly TextBox[] outputBoxes;
+        private readonly TextBox[] neuroOutputBoxes;
 
         private ExamplesDataHelper ExamplesDataHelper { get; set; }
         public ListBox ExamplesListBox { get; set; }
         public PictureBox TestPictureBox { get; set; }
 
-        public TestCreateTab(ExamplesDataHelper ExamplesDataHelper, TextBox[] inputs, TextBox[] outputs)
+        public TestCreateTab(ExamplesDataHelper ExamplesDataHelper, TextBox[] inputs, TextBox[] outputs, TextBox[] neuroOutputs)
         {
             this.ExamplesDataHelper = ExamplesDataHelper;
             this.ExamplesDataHelper.LoadExamples();
             this.inputBoxes = inputs;
             this.outputBoxes = outputs;
+            this.neuroOutputBoxes = neuroOutputs;
         }
 
         public void SelectExample()
@@ -74,7 +77,7 @@ namespace TestApplication
             ExamplesListBox.SelectedIndex = index;
         }
 
-        public void AddCreatedTest()
+        public void AddCreatedTest(NeuralNetwork network)
         {
             Example example = new Example
             {
@@ -113,6 +116,13 @@ namespace TestApplication
             {
                 outputBoxes[i].Text = example.OutputValues[i].ToString();
             }
+            var neuralOutputs=network.NextStep(example.InputValues);
+
+            for (int i = 0; i < this.outputBoxes.Length; i++)
+            {
+                neuroOutputBoxes[i].Text = neuralOutputs[i].ToString();
+            }
+
         }
 
         public void SaveTest()
@@ -151,7 +161,7 @@ namespace TestApplication
                 ExamplesListBox.SelectedIndex = 0;
         }
 
-        public void GenerateTests()
+        public void GenerateTests(NeuralNetwork network)
         {
             Example example = new Example
             {
@@ -212,7 +222,7 @@ namespace TestApplication
                 Console.WriteLine("{0} {1}", point, r);
                 GraphicsDrawer.GetSimpleAngle(point);
             }
-            this.AddCreatedTest();
+            this.AddCreatedTest(network);
         }
 
         public void SetActive()
