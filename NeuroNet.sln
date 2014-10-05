@@ -9,8 +9,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NeuralNetTest", "NeuralNetT
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UIApplication", "TestApplication\UIApplication.csproj", "{F67A2299-0476-43C5-81F3-4FD8A8476651}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Neuro", "neuro_src\Sources\Neuro\Neuro.csproj", "{53B51230-2CD7-435B-8677-A3E24D134CD8}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -29,10 +27,6 @@ Global
 		{F67A2299-0476-43C5-81F3-4FD8A8476651}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F67A2299-0476-43C5-81F3-4FD8A8476651}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F67A2299-0476-43C5-81F3-4FD8A8476651}.Release|Any CPU.Build.0 = Release|Any CPU
-		{53B51230-2CD7-435B-8677-A3E24D134CD8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{53B51230-2CD7-435B-8677-A3E24D134CD8}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{53B51230-2CD7-435B-8677-A3E24D134CD8}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{53B51230-2CD7-435B-8677-A3E24D134CD8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
